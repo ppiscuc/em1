@@ -1,0 +1,33 @@
+{
+  "name": "EM",
+  "version": "0.0.1",
+  "author": "Paul Piscuc",
+  "description": "aplicatie de management al membrilor",
+  "main": "src/browser/main.js",
+  "scripts": {
+    "start": "gulp",
+    "release": "gulp release",
+    "lint": "jsxhint src",
+    "reset": "gulp reset"
+  },
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ],
+  "electron-version": "0.26.1",
+  "dependencies": {
+    "jquery": "^2.1.4",
+    "parseUri": "^1.2.3-2",
+    "react": "^0.13.3",
+    "react-bootstrap": "^0.23.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-reload": "0.0.4",
+    "jsxhint": "^0.15.0",
+    "react-tools": "^0.13.3"
+  }
+}
