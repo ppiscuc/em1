@@ -1,9 +1,14 @@
-app = require('app');
-url = require('url');
-path = require('path');
-fs = require('fs');
-spawn = require('child_process').spawn;
+var app = require('app');
+var url = require('url');
+var path = require('path');
+var fs = require('fs');
+var spawn = require('child_process').spawn;
+var ipc = require('ipc');
+var path = require('path');
 
+process.env.NODE_PATH = path.join(__dirname,'/../node_modules');
+process.chdir(path.join(__dirname,'..'));
+process.env.PATH = '/usr/local/bin:' + process.env.PATH;
 
 var BrowserWindow = require('browser-window');
 var Menu = require('menu');
@@ -28,13 +33,17 @@ var menu = Menu.buildFromTemplate(menutemplate);
 //wait for electron initialization
 app.on('ready', function(){
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1000,
+        height: 780,
+        'min-width': 1000,
+        'min-height': 600,
+        'standard-window': false,
+        resizable: true,
+        frame: false
         title: 'EM'
         });
-    console.log(__dirname);
     Menu.setApplicationMenu(menu);
-    mainWindow.loadUrl('file://' + __dirname + '../../../index.html');
+    mainWindow.loadUrl('file://' + path.ojoin(__dirname,'..', 'build/index.html');
     //open devtools
     mainWindow.openDevTools();
     //event emited on close

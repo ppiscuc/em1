@@ -18,6 +18,7 @@ gulp.task('js', function(){
             gutil.log(gutil.colors.red('Error (' + error.plugin + '): ' + error.message));
             this.emit('end');
          }))
+         .pipe(babel({blacklist:['regenerator']}))
          .pipe(gulp.dest('./build'))
          .pipe(gulpif(options.dev, livereload()));
 });
