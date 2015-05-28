@@ -34,6 +34,7 @@
     "gulp-babel": "^5.1.0",
     "gulp-changed": "^1.2.1",
     "gulp-if": "^1.2.5",
+    "gulp-less": "^3.0.3",
     "gulp-livereload": "^3.8.0",
     "gulp-plumber": "^1.0.1",
     "gulp-reload": "0.0.4",
