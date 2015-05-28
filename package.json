@@ -21,6 +21,8 @@
     "alt": "^0.16.6",
     "grunt": "^0.4.5",
     "grunt-react": "^0.12.2",
+    "gulp-changed": "^1.2.1",
+    "gulp-if": "^1.2.5",
     "jquery": "^2.1.4",
     "parseUri": "^1.2.3-2",
     "react": "^0.13.3",
@@ -32,7 +34,12 @@
   "devDependencies": {
     "grunt-browserify": "^3.8.0",
     "gulp": "^3.8.11",
+    "gulp-if": "^1.2.5",
+    "gulp-livereload": "^3.8.0",
+    "gulp-plumber": "^1.0.1",
     "gulp-reload": "0.0.4",
+    "gulp-shell": "^0.4.1",
+    "gulp-util": "^3.0.4",
     "jsxhint": "^0.15.0",
     "react-tools": "^0.13.3"
   }
