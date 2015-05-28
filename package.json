@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "author": "Paul Piscuc",
   "description": "aplicatie de management al membrilor",
-  "main": "src/browser/main.js",
+  "main": "build/browser.js",
   "scripts": {
     "start": "gulp",
     "release": "gulp release",
@@ -31,9 +31,10 @@
   "devDependencies": {
     "grunt-browserify": "^3.8.0",
     "gulp": "^3.8.11",
+    "gulp-babel": "^5.1.0",
+    "gulp-changed": "^1.2.1",
     "gulp-if": "^1.2.5",
     "gulp-livereload": "^3.8.0",
-    "gulp-changed": "^1.2.1",
     "gulp-plumber": "^1.0.1",
     "gulp-reload": "0.0.4",
     "gulp-shell": "^0.4.1",

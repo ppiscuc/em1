@@ -9,5 +9,5 @@ var alt = require('../alt');
 var foodActions = alt.createActions({
   addItem: function(item){
       this.dispath(item);//send data to dispatcher, 1 argument only
-};
+}
 });

@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var changed = require('gulp-changed');
 var fs = require('fs');
+var babel = require('gulp-babel');
 var gulpif = require('gulp-if');
 var gutil = require('gulp-util');
 var shell = require('gulp-shell');
@@ -42,7 +43,7 @@ gulp.task('copy',function(){
 gulp.task('default', ['copy', 'js', 'styles'], function(){
   gulp.watch('src/**/*.js', ['js']);
   gulp.watch('index.html', ['copy']);
-  
+
   livereload.listen();
 
   var env = process.env;
@@ -53,7 +54,8 @@ gulp.task('default', ['copy', 'js', 'styles'], function(){
         env: env
   }));
   } else {
-    gulp.src('').pipe(shell(['./cache/Electron.app/Contents/MacOS/Electron .'], {
+    gulp.src('').pipe(shell(['/usr/local/bin/electron .'], {
+    //gulp.src('').pipe(shell(['./cache/Electron.app/Contents/MacOS/Electron .'], {
         env: env
     }));
  }

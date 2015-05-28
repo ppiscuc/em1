@@ -1,4 +1,7 @@
-var BrowserWindow = require('browser-window');
+var remote = require('remote');
+var app = remote.require('app');
+var BrowserWindow = remote.require('browser-window');
+
 
 var menutemplate = [
         {

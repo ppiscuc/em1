@@ -1,20 +1,27 @@
-require.main.path.splice(0,0, process.env.NODE_PATH);
+require.main.paths.splice(0,0, process.env.NODE_PATH);
 var remote = require('remote');
 var Menu = remote.require('menu');
 var React = require('react');
-var router = require('./router');
+var routes = require('./routes');
 var app = remote.require('app');
 var Router = require('react-router');
-var routes = require('./routes');
-var template = require('./menutemplate');
 
-Menu.setApplicationMenu(Menu.buildFromTemplate(template()));
+var template = require('./menutemplate');
+//actions
+
 
 var router = Router.create({
-  routes: routes
+    routes: routes
 });
-router.run(Handler => React.render(<Handler/>, document.body));
+
+router.run(routes, function(Handler){
+    React.render(<Handler/>, document.getElementById('content'));
+});
+
 routerContainer.set(router);
+//initialize the store
+Menu.setApplicationMenu(Menu.buildFromTemplate(template()));
+
 
 module.export = {
   router: router
