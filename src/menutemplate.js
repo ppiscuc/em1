@@ -3,7 +3,8 @@ var app = remote.require('app');
 var BrowserWindow = remote.require('browser-window');
 
 
-var menutemplate = [
+var Menutemplate = function() {
+    return [
         {
             label: 'EM',
             submenu: [
@@ -92,5 +93,6 @@ var menutemplate = [
     submenu: []
   },
 ];
+};
 
-module.exports = menutemplate;
+module.exports = Menutemplate;

@@ -5,7 +5,7 @@ var React = require('react');
 var routes = require('./routes');
 var app = remote.require('app');
 var Router = require('react-router');
-
+var routerContainer  = require('./router');
 var template = require('./menutemplate');
 //actions
 
@@ -13,9 +13,8 @@ var template = require('./menutemplate');
 var router = Router.create({
     routes: routes
 });
-
-router.run(routes, function(Handler){
-    React.render(<Handler/>, document.getElementById('content'));
+router.run(function(Handler, state) {
+   React.render(<Handler {...state} />, document.getElementById('content'));
 });
 
 routerContainer.set(router);
