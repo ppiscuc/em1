@@ -7,6 +7,7 @@ var app = remote.require('app');
 var Router = require('react-router');
 var routerContainer  = require('./router');
 var template = require('./menutemplate');
+var path = require('path');
 //actions
 
 

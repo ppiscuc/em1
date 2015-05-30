@@ -9,14 +9,18 @@ class MemberStore {
     //this.bindAction(MemberActions.create, this.create);
     this.bindActions(MemberActions);
 
-  this.selectedMember = null;
-  this.loading = false;
-  this.errors = [];
-  this.members = [];
-  this.filteredMembers = [];
-}
+    this.selectedMember = null;
+    this.loading = false;
+    this.errors = [];
+    this.members = [];
+    this.filteredMembers = [];
+    this.church_name = '';
+    this.church_address = '';
+  }
   onSearch() {
-    this.loading = true;
+    this.setState({
+      loading: true;
+    }
   }
   onSearchSuccess(members){
     this.loading = false;
@@ -34,6 +38,13 @@ class MemberStore {
   }
   onSelect(member) {
     this.selectedMember = member;
+  }
+  onNewSettings({church_name, church_address}) {
+    console.log('STOR onNewSettings', church_name, church_address);
+    this.setState {
+      church_name,
+      church_address
+    }
   }
   static getMembers() {
     return this.getState().members;

@@ -16,5 +16,9 @@ class MemberActions {
   update (member) {
     this.dispatch({member});
   }
+  onNewSettings(church_name, church_address) {
+    console.log('ACT onNewSettings');
+    this.dispatch({church_name, church_address});
+  }
 }
 export default alt.createActions(MemberActions);
