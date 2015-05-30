@@ -19,7 +19,7 @@ class MemberStore {
     this.church_name = '';
     this.church_address = '';
   }
-  onSearch() {
+  onSearch(query) {
     this.setState({
       loading: true
     });

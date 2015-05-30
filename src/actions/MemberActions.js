@@ -1,8 +1,8 @@
 import alt from '../alt';
 
 class MemberActions {
-  search(query) {
-    this.dispatch({query});
+  onSearch(query) {
+    this.dispatch(query);
   }
   searchSuccess(members) {
     this.dispatch(members);

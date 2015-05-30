@@ -1,14 +1,18 @@
 var React = require('react');
 var Router = require('react-router');
+var _ = require('underscore');
+var MemberStore = require('../stores/MemberStore');
+var MemberActions = require('../actions/MemberActions');
+var MemberTable = require('./MemberTable.react');
 
 var Search = React.createClass({
     mixins: [Router.State],
     getInitialState: function() {
             return {
                 query: '',
-                loading: MembersStore.loading(),
-                members: MembersStore.getState().members,
-                error: MembersStore.getState().error
+                loading: MemberStore.getState().loading,
+                members: MemberStore.getState().members,
+                error: MemberStore.getState().error
             }
     },
     componentDidMount: function() {
@@ -20,7 +24,7 @@ var Search = React.createClass({
     },
     update: function() {
       this.setState({
-        loading: MemberStore.loading(),
+        loading: MemberStore.getState().loading,
         members: MemberStore.getState().members
       });
     },
@@ -29,7 +33,7 @@ var Search = React.createClass({
         query: query,
         loading: true
       });
-      MemberActions.search(query);
+      MemberActions.onSearch(query);
     },
     handleChange: function() {
       var query = e.target.value;
@@ -40,14 +44,13 @@ var Search = React.createClass({
     },
     render: function () {
         let members = _.values(this.state.members);
-        let results = _.
         return (
           <div>
             <div>Search for a member to see more details.</div>
               <input type="search" ref="searchInput" className="form-control"
-                placeholder="Search Docker Hub for an image" onChange={this.handleChange}/>
-              <div class="results">
-                {members}
+                placeholder="Cauta" onChange={this.handleChange}/>
+              <div className="results">
+                  <MemberTable members={members} />
               </div>
             </div>
 

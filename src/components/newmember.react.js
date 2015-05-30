@@ -17,6 +17,8 @@ var NewMember = React.createClass({
         }
         newmember.phone = React.findDOMNode(this.refs.phone).value.trim();
         newmember.mobile = React.findDOMNode(this.refs.mobile).value.trim();
+        newmember.address = React.findDOMNode(this.refs.address).value.trim();
+        newmember.city = React.findDOMNode(this.refs.city).value.trim();
         newmember.baptised_date = React.findDOMNode(this.refs.baptised_date).value.trim();
         newmember.baptised_church = React.findDOMNode(this.refs.baptised_church).value.trim();
         newmember.membership_status = React.findDOMNode(this.refs.membership_status).value.trim();
@@ -35,6 +37,8 @@ var NewMember = React.createClass({
         //React.findDOMNode(this.refs.gendermasculin).checked = true;
         React.findDOMNode(this.refs.phone).value = '';
         React.findDOMNode(this.refs.mobile).value = '';
+        React.findDOMNode(this.refs.address).value = '';
+        React.findDOMNode(this.refs.city).value = '';
         React.findDOMNode(this.refs.baptised_date).value = '';
         React.findDOMNode(this.refs.baptised_church).value = '';
         React.findDOMNode(this.refs.membership_status).value = '';
