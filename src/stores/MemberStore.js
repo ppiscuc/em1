@@ -31,7 +31,11 @@ class MemberStore {
   onCreate(member) {
     const id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36)
     member.id = id;
-    this.members.push(member);
+    var curmembers = this.members;
+    curmembers.push(member);
+    this.setState({
+      members: curmembers
+    });
 
   }
   onUpdate(update) {

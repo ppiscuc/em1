@@ -10,8 +10,9 @@ class MemberActions {
   members () {
     this.dispatch({});
   }
-  create (member) {
-    this.dispatch({member});
+  onCreate (member) {
+    console.log('oncreate');
+    this.dispatch(member);
   }
   update (member) {
     this.dispatch({member});

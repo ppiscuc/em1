@@ -4,10 +4,11 @@ var MemberActions = require('../actions/MemberActions.js');
 
 var NewMember = React.createClass({
     mixins: [Router.State],
-    handleSubmit: function(e) {
+    handleSave: function(e) {
+      console.log('handlesave');
         e.preventDefault();
-        var newmemer;
-        newmemer.first_name = this.refs.first_name.getDOMNode().value.trim();
+        var newmember = {};
+        newmember.first_name = this.refs.first_name.getDOMNode().value.trim();
         newmember.last_name = React.findDOMNode(this.refs.last_name).value.trim();
         newmember.birth_date = React.findDOMNode(this.refs.birth_date).value.trim();
         newmember.gender = 'masculin';
@@ -23,12 +24,11 @@ var NewMember = React.createClass({
         newmember.marital_status = React.findDOMNode(this.refs.marital_status).value.trim();
         newmember.details = React.findDOMNode(this.refs.details).value.trim();
 
-        if (!newmember.first_name || !newmember.last_name || !newmember.birth_date || !newmember.gender || !newmember.status) {
+        if (!newmember.first_name || !newmember.last_name || !newmember.birth_date || !newmember.gender || !newmember.membership_status) {
             return;
         }
-        MemberActions.create(newmember);
+        MemberActions.onCreate(newmember);
         //clean the fields
-        console.log('clear');
         React.findDOMNode(this.refs.first_name).value = '';
         React.findDOMNode(this.refs.last_name).value = '';
         React.findDOMNode(this.refs.birth_date).value = '';
@@ -95,28 +95,28 @@ renderTextInput: function(id, label, placeholder) {
         return (
                 <div>
                 <h1>Adauga un nou membru</h1>
-                <form className="form-horizontal" onSubmit={this.handleSubmit}>
-                        {this.renderTextInput('first_name', 'Prenume')}
-                        {this.renderTextInput('last_name', 'Nume')}
-                        {this.renderTextInput('birth_date', 'Data nasterii', 'DD/MM/YYYY')}
-                        {this.renderRadioInline('gender', 'Sex', {values: ['masculin', 'feminin'], defaultCheckedValue: 'masculin'})}
-                        {this.renderTextInput('phone','Fix')}
-                        {this.renderTextInput('mobile', 'Mobil')}
-                        {this.renderTextInput('address', 'Adresa')}
-                        {this.renderTextInput('city','Oras')}
-                        {this.renderTextInput('email', 'Email', 'email@domain.com')}
-                        {this.renderTextInput('baptised_date', 'Data botez', 'DD/MM/YYYY')}
-                        {this.renderTextInput('baptised_church', 'Biserica botez')}
-                        {this.renderTextInput('membership_status', 'Status')}
-                        {this.renderTextInput('member_since', 'Membru de la', 'DD/MM/YYYY')}
-                        {this.renderSelect('marital_status', 'Statut marital', ['casatorit', 'necasatorit', 'divortat', 'vaduv'])}
-                        {this.renderTextInput('details', 'Detalii')}
-                        <div className="form-group">
-                            <div className="col-sm-4"></div>
-                            <div className="col-sm-6">
-                                <input type="submit" value="Submit" />
-                            </div>
-                        </div>
+                <form className="form-horizontal">
+                  {this.renderTextInput('first_name', 'Prenume')}
+                  {this.renderTextInput('last_name', 'Nume')}
+                  {this.renderTextInput('birth_date', 'Data nasterii', 'DD/MM/YYYY')}
+                  {this.renderRadioInline('gender', 'Sex', {values: ['masculin', 'feminin'], defaultCheckedValue: 'masculin'})}
+                  {this.renderTextInput('phone','Fix')}
+                  {this.renderTextInput('mobile', 'Mobil')}
+                  {this.renderTextInput('address', 'Adresa')}
+                  {this.renderTextInput('city','Oras')}
+                  {this.renderTextInput('email', 'Email', 'email@domain.com')}
+                  {this.renderTextInput('baptised_date', 'Data botez', 'DD/MM/YYYY')}
+                  {this.renderTextInput('baptised_church', 'Biserica botez')}
+                  {this.renderTextInput('membership_status', 'Status')}
+                  {this.renderTextInput('member_since', 'Membru de la', 'DD/MM/YYYY')}
+                  {this.renderSelect('marital_status', 'Statut marital', ['casatorit', 'necasatorit', 'divortat', 'vaduv'])}
+                  {this.renderTextInput('details', 'Detalii')}
+                  <div className="form-group">
+                      <div className="col-sm-4"></div>
+                      <div className="col-sm-6">
+                      <button className="btn btn-action" onClick={this.handleSave} type="submit">Adauga</button>
+                      </div>
+                  </div>
                 </form>
                 </div>
                 );
