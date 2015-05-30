@@ -7,7 +7,7 @@ var SearchStats = React.createClass({
         //var church_address = this.props.settings.church_address;
         //var church_city = this.props.settings.church_city;
         return (
-            <div>welcome to react</div>
+            <div>Selecteaza un membru din lista pentru a afla mai multe informatii.</div>
         );
     }
 });

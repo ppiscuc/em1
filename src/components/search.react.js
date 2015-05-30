@@ -45,15 +45,19 @@ var Search = React.createClass({
     render: function () {
         let members = _.values(this.state.members);
         return (
-          <div>
-            <div>Search for a member to see more details.</div>
-              <input type="search" ref="searchInput" className="form-control"
+          <div className="row">
+            <div className="col-md-8">
+              <div>Search for a member to see more details.</div>
+                <input type="search" ref="searchInput" className="form-control"
                 placeholder="Cauta" onChange={this.handleChange}/>
-              <div className="results">
+                <div className="results">
                   <MemberTable members={members} />
+                </div>
+              </div>
+              <div className="col-md-4">
+                <Router.RouteHandler />
               </div>
             </div>
-
         );
     }
 });
