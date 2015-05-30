@@ -1,6 +1,6 @@
 var React = require('react');
 var Router = require('react-router');
-var MemberActions = require('../actions/MemberActions.js);
+var MemberActions = require('../actions/MemberActions.js');
 
 var MemberDetail = React.createClass({
     mixins: [ Router.State ],

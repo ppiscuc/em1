@@ -8,13 +8,13 @@ class MemberStore {
   constructor() {
     //this.bindAction(MemberActions.create, this.create);
     this.bindActions(MemberActions);
-  }
+
   this.selectedMember = null;
   this.loading = false;
-  this.errors = {};
+  this.errors = [];
   this.members = [];
   this.filteredMembers = [];
-
+}
   onSearch() {
     this.loading = true;
   }
@@ -28,8 +28,9 @@ class MemberStore {
     this.members.push(member);
 
   }
-  onUpdate(id, update) {
-    this.members[id] = assign(this.members[id], update);
+  onUpdate(update) {
+    //this.members[id] = assign(this.members[id], update);
+    this.members.push(update);
   }
   onSelect(member) {
     this.selectedMember = member;

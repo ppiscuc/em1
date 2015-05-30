@@ -3,7 +3,7 @@ var Router = require('react-router');
 var MemberActions = require('../actions/MemberActions.js');
 
 var NewMember = React.createClass({
-    mixins: [State],
+    mixins: [Router.State],
     handleSubmit: function(e) {
         e.preventDefault();
         var newmemer;

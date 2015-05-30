@@ -5,13 +5,6 @@ var Route = Router.Route;
 var DefaultRoute = Router.DefaultRoute;
 var RouteHandler = Router.RouteHandler;
 
-// var MainApp = require('./components/app.jsx');
-// var Search = require('./components/search.jsx');
-// var MemberDetail = require('./components/memberdetail.jsx');
-// var SearchStats = require('./components/searchstats.jsx');
-// var NewMember = require('./components/newmember.jsx');
-// var Settings = require('./components/settings.jsx');
-// var Dashboard = require('./components/dashboard.jsx');
 var Container = require('./components/container.react');
 var Search = require('./components/search.react');
 var MemberDetail = require('./components/memberdetail.react');
@@ -19,6 +12,7 @@ var SearchStats = require('./components/searchstats.react');
 var NewMember = require('./components/newmember.react');
 var Settings = require('./components/settings.react');
 var Dashboard = require('./components/dashboard.react');
+
 
 
 var routes = (
