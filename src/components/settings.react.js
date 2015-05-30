@@ -6,22 +6,16 @@ var _ = require('underscore');
 var MemberActions = require('../actions/MemberActions');
 
 var Settings = React.createClass({
-  mixins: [React.addons.LinkedStateMixin],
-  getInitialState() {
-    console.log('getInitialState');
+  getInitialState: function() {
     return MemberStore.getState();
   },
-  componentDidMount() {
-    console.log('componentDidMount');
-    React.findDOMNode(this.refs.church_nameInput).focus();
-    MemberStore.listen(this._onChange);
+  componentDidMount: function() {
+    MemberStore.listen(this.update);
   },
-  componentDidUnmount() {
-    console.log('componentDidUnmount');
-    MemberStore.unlisten(this._onChange);
+  componentWillUnmount: function() {
+    MemberStore.unlisten(this.update);
   },
-  _onChange() {
-    console.log('_onChange');
+  update() {
     this.setState(MemberStore.getState());
   },
   validate () {
@@ -35,15 +29,24 @@ var Settings = React.createClass({
     return errors;
 
   },
-  handleSave() {
+  handleChange: function(e) {
+    var that = this;
+    if (e.target === this.refs.church_name.getDOMNode()) {
+      that.setState({
+        church_name: e.target.value
+      });
+    } else if (e.target === this.refs.church_address.getDOMNode()) {
+        that.setState({
+          church_address: e.target.value
+        });
+      }
+  },
+  handleSave: function(e) {
+    e.preventDefault();
     console.log('handleSave', this.state.church_name, this.state.church_address);
     //let errors = this.validate();
     //this.setState({errors});
-    let errors = {};
-    if (_.isEmpty(errors)){
-      console.log('handlesave ', this.state.church_name, this.state.church_address);
-      MemberActions.onNewSettings(church_name, church_address);
-    };
+      MemberActions.onNewSettings(this.state.church_name, this.state.church_address);
   },
   render: function() {
       return (
@@ -53,7 +56,7 @@ var Settings = React.createClass({
                   <div className="form-group">
                       <label htmlFor='church_name' className="col-sm-4 control-label">Nume biserica</label>
                       <div className="col-sm-6">
-                          <input type="text" className="form-control" name='church_name' ref='church_nameInput' placeholder='Nume biserica' valueLink={this.linkState('church_name')} />
+                          <input type="text" className="form-control" name='church_name' ref='church_name' placeholder='Nume biserica' value={this.state.church_name} onChange={this.handleChange} />
                             <p className="error-message">{this.state.errors}</p>
 
                       </div>
@@ -61,7 +64,7 @@ var Settings = React.createClass({
                   <div className="form-group">
                       <label htmlFor="church_address" className="col-sm-4 control-label">Adresa</label>
                       <div className="col-sm-6">
-                          <input type="text" className="form-control" name='church_address' ref='church_addressInput' placeholder="Adresa" valueLink={this.linkState('church_address')} />
+                          <input type="text" className="form-control" name='church_address' ref='church_address' placeholder="Adresa" value={this.state.church_address} onChange={this.handleChange} />
                             <p className="error-message">{this.state.errors}</p>
 
                       </div>
@@ -78,4 +81,4 @@ var Settings = React.createClass({
   }
 });
 
-export default Settings;
+module.exports = Settings;

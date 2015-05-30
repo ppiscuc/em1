@@ -20,5 +20,8 @@ class MemberActions {
     console.log('ACT onNewSettings');
     this.dispatch({church_name, church_address});
   }
+  changeTest(value) {
+    this.dispatch(value);
+  }
 }
 export default alt.createActions(MemberActions);

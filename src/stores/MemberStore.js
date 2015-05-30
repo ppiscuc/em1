@@ -1,16 +1,18 @@
 import alt from '../alt';
-import MemberActions from '../actions/MemberActions.js';
+import MemberActions from '../actions/MemberActions';
 
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
 class MemberStore {
-  constructor() {
+  constructor () {
     //this.bindAction(MemberActions.create, this.create);
+    console.log('calling again the constructor!');
     this.bindActions(MemberActions);
 
     this.selectedMember = null;
     this.loading = false;
+    this.test = 'test';
     this.errors = [];
     this.members = [];
     this.filteredMembers = [];
@@ -19,8 +21,8 @@ class MemberStore {
   }
   onSearch() {
     this.setState({
-      loading: true;
-    }
+      loading: true
+    });
   }
   onSearchSuccess(members){
     this.loading = false;
@@ -41,10 +43,15 @@ class MemberStore {
   }
   onNewSettings({church_name, church_address}) {
     console.log('STOR onNewSettings', church_name, church_address);
-    this.setState {
+    this.setState({
       church_name,
       church_address
-    }
+    });
+  }
+  changeTest(value) {
+    this.setState({
+      test: value
+    });
   }
   static getMembers() {
     return this.getState().members;
