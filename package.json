@@ -23,6 +23,7 @@
     "jquery": "^2.1.4",
     "object-assign": "^2.0.0",
     "parseUri": "^1.2.3-2",
+    "pouchdb": "^3.5.0",
     "react": "^0.13.3",
     "react-bootstrap": "^0.23.0",
     "react-router": "^0.13.3",

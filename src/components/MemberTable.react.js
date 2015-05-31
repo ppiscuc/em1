@@ -2,8 +2,24 @@ var React = require('react');
 var Router = require('react-router');
 var _ = require('underscore');
 
+var RowWrapper = React.createClass({
+  render: function() {
+    return (
+      <div>
+      <tr>
+        <td>{this.props.data.first_name}</td>
+        <td>{this.props.data.last_name}</td>
+        <td>{this.props.data.birth_date}</td>
+        <td>{this.props.data.mobile}</td>
+        <td>{this.props.data.city}</td>
+      </tr>
+    </div>
+    );
+  }
+});
 var MemberTable = React.createClass({
   render: function() {
+    var that = this;
     var header = (
       <thead>
         <tr>
@@ -15,15 +31,9 @@ var MemberTable = React.createClass({
         </tr>
       </thead>
     );
-    var nodes = this.props.members.map(function(row, index){
+    var nodes = this.props.members.map(function(row){
       return (
-        <tr >
-            <td>{row.first_name}</td>
-            <td>{row.last_name}</td>
-            <td>{row.birth_date}</td>
-            <td>{row.mobile}</td>
-            <td>{row.city}</td>
-        </tr>
+        <RowWrapper onClick={that.props.handleSelect} key={row.id} data={row} />
       );
     });
     return (

@@ -1,4 +1,5 @@
 import alt from '../alt';
+import Pdb from '../utils/Pdb';
 
 class MemberActions {
   onSearch(query) {
@@ -11,7 +12,8 @@ class MemberActions {
     this.dispatch({});
   }
   onCreate (member) {
-    console.log('oncreate');
+    member._id = new Date().toISOString();
+    Pdb.addMember(member);
     this.dispatch(member);
   }
   update (member) {

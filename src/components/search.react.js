@@ -42,6 +42,10 @@ var Search = React.createClass({
       }
       this.search(query);
     },
+    handleSelect: function(index) {
+      console.log('handleselect');
+      console.log(index);
+    },
     render: function () {
         let members = _.values(this.state.members);
         return (
@@ -51,7 +55,7 @@ var Search = React.createClass({
                 <input type="search" ref="searchInput" className="form-control"
                 placeholder="Cauta" onChange={this.handleChange}/>
                 <div className="results">
-                  <MemberTable members={members} />
+                  <MemberTable members={members} handleSelect={this.handleSelect} />
                 </div>
               </div>
               <div className="col-md-4">
