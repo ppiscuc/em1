@@ -17,6 +17,7 @@ require('crash-reporter').start();
 //keep a reference to the window object, otherwise it will be destroyed at gc
 var mainWindow = null;
 
+
 app.on('window-all-closed', function(){
     if (process.platform != 'darwin')
         app.quit();
@@ -40,6 +41,7 @@ app.on('ready', function(){
         show: false,
         title: 'EM'
         });
+        
     mainWindow.loadUrl('file://' + path.join(__dirname,'..', 'build/index.html'));
     //open devtools
     app.on('activate-with-no-open-windows', function(){

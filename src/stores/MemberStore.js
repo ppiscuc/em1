@@ -19,11 +19,6 @@ class MemberStore {
     this.church_name = '';
     this.church_address = '';
   }
-  onSearch(query) {
-    this.setState({
-      loading: true
-    });
-  }
   onSearchSuccess({members}){
     this.loading = false;
     this.filteredMembers = members;
@@ -57,12 +52,23 @@ class MemberStore {
       test: value
     });
   }
+  search() {
+    this.setState({
+      loading: true
+    });
+  }
+  //from server actions
+  membersUpdated({members}) {
+    this.setState({
+      members: members
+    });
+  }
   static all() {
     return this.getState().members;
   }
   static loading() {
    return this.loading;
-  } 
+  }
 }
 
 export default alt.createStore(MemberStore);

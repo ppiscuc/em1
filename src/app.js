@@ -8,8 +8,14 @@ var Router = require('react-router');
 var routerContainer  = require('./router');
 var template = require('./menutemplate');
 var path = require('path');
+var PouchDB = require('PouchDB');
 //actions
 
+if (typeof window.wpouch !== 'undefined') {
+  console.log('db initialized');
+} else {
+  window.wpouch = new PouchDB('members');
+}
 
 var router = Router.create({
     routes: routes

@@ -1,5 +1,5 @@
 import alt from '../alt';
-import Pdb from '../utils/Pdb';
+import PouchUtils from '../utils/PouchUtils';
 
 class MemberActions {
   onSearch(query) {
@@ -13,7 +13,7 @@ class MemberActions {
   }
   onCreate (member) {
     member._id = new Date().toISOString();
-    Pdb.addMember(member);
+    PouchUtils.addMember(member);
     this.dispatch(member);
   }
   update (member) {
@@ -25,6 +25,13 @@ class MemberActions {
   }
   changeTest(value) {
     this.dispatch(value);
+  }
+  search(query) {
+    this.dispatch({});
+    PouchUtils.search(query);
+  }
+  membersUpdated({members}){
+    this.dispatch({members});
   }
 }
 export default alt.createActions(MemberActions);

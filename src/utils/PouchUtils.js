@@ -1,38 +1,38 @@
-import PouchDB from 'pouchdb';
-import MemberActions from '../actions/MemberActions';
+var PouchDB = require('pouchdb');
+var MemberActions = require('../actions/MemberActions');
 
-class PouchUtil {
-  constructor () {
-    console.log('storage constructor');
-    this.db = new PouchDB('members');
-}
-addMember (member) {
-  this.db.put(member, function(err,result){
-    if (!err) {
-      console.log('Added member successsfully.');
-    }
-  });
-}
-_allMembers(){
-    this.db.AllDocs({include_docs: true, descending: true}, function(err, doc){
+module.exports = {
+  addMember: function(member) {
+    wpouch.put(member, function(err,result){
+      if (!err) {
+        console.log('Added member successsfully.');
+      }
+    });
+  },
+  _allMembers: function() {
+    wpouch.allDocs({include_docs: true, descending: true}, function(err, doc){
       return doc.rows;
     });
-}
-updateMember(updatedmember) {
+  },
+  updateMember: function(updatedmember) {
     console.log('updating member with _id', updatedmember._id);
-    this.db.put(updatedmember, function(err, result){
+    wpouch.put(updatedmember, function(err, result){
       if (!err) {
         console.log('Edited member successsfully');
       }
     });
-}
-deleteMember(member) {
-    this.db.remove(member);
-}
-getAllMembers() {
-  let members = this._allMembers();
-  MemberActions.membersUpdated({members});
-}
-}
-
-export default new PouchUtil();
+  },
+  deleteMember: function(member) {
+    wpouch.remove(member);
+  },
+  search: function(query) {
+    var members = [];
+    wpouch.allDocs({include_docs: true, descending: true})
+    .then(function(result){
+      members.push(result.rows);
+    }).catch(function(err){
+      console.log('error fetching docs');
+    });
+    MemberActions.membersUpdated({members});
+  }
+};
