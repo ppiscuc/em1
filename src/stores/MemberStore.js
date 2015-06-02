@@ -24,7 +24,7 @@ class MemberStore {
       loading: true
     });
   }
-  onSearchSuccess(members){
+  onSearchSuccess({members}){
     this.loading = false;
     this.filteredMembers = members;
   }
@@ -57,9 +57,12 @@ class MemberStore {
       test: value
     });
   }
-  static getMembers() {
+  static all() {
     return this.getState().members;
   }
-
+  static loading() {
+   return this.loading;
+  } 
 }
+
 export default alt.createStore(MemberStore);

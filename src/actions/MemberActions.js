@@ -5,8 +5,8 @@ class MemberActions {
   onSearch(query) {
     this.dispatch(query);
   }
-  searchSuccess(members) {
-    this.dispatch(members);
+  onSearchSuccess({members}) {
+    this.dispatch({members});
   }
   members () {
     this.dispatch({});
