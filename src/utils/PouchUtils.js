@@ -36,6 +36,11 @@ module.exports = {
         members.push(doc.rows[i].doc);
       }
       console.log(members);
+      //FIXME timer
+      //var stop = new Date().getTime();
+      //while(new Date().getTime() < stop + 10000) {
+      //    ;
+      //  }
       MemberServerActions.onMembersUpdated({members});
 
 

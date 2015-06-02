@@ -33,7 +33,7 @@ var MemberTable = React.createClass({
     );
     var nodes = this.props.members.map(function(row){
       return (
-        <RowWrapper onClick={that.props.handleSelect} key={row.id} data={row} />
+        <RowWrapper onClick={that.props.handleSelect} key={row._id} data={row} />
       );
     });
     return (

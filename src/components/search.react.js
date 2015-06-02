@@ -18,7 +18,10 @@ var Search = React.createClass({
     componentDidMount: function() {
       this.refs.searchInput.getDOMNode().focus();
       MemberStore.listen(this.update);
-      MemberActions.fetchAllMembers();
+      if (this.state.members.length === 0) {
+        //generate a fetch action
+        MemberActions.fetchAllMembers();
+      }
     },
     componentWillUnmount: function() {
       MemberStore.unlisten(this.update);
@@ -49,6 +52,10 @@ var Search = React.createClass({
     },
     render: function () {
         let members = _.values(this.state.members);
+        let dataloading = <div>loading ...</div>;
+        if (members.length > 0 ) {
+          dataloading = <MemberTable members={members} handleSelect={this.handleSelect} />;
+        }
         return (
           <div className="row">
             <div className="col-md-8">
@@ -56,7 +63,7 @@ var Search = React.createClass({
                 <input type="search" ref="searchInput" className="form-control"
                 placeholder="Cauta" onChange={this.handleChange}/>
                 <div className="results">
-                  <MemberTable members={members} handleSelect={this.handleSelect} />
+                  {dataloading}
                 </div>
               </div>
               <div className="col-md-4">
