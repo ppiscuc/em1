@@ -11,6 +11,10 @@ class MemberActions {
   members () {
     this.dispatch({});
   }
+  fetchAllMembers () {
+    this.dispatch();
+    PouchUtils.fetchAllMembers();
+  }
   onCreate (member) {
     member._id = new Date().toISOString();
     PouchUtils.addMember(member);
@@ -27,11 +31,8 @@ class MemberActions {
     this.dispatch(value);
   }
   search(query) {
-    this.dispatch({});
-    PouchUtils.search(query);
+    this.dispatch(query);
   }
-  membersUpdated({members}){
-    this.dispatch({members});
-  }
+  //server actions
 }
 export default alt.createActions(MemberActions);

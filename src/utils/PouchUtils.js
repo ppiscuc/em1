@@ -1,5 +1,5 @@
 var PouchDB = require('pouchdb');
-var MemberActions = require('../actions/MemberActions');
+var MemberServerActions = require('../actions/MemberServerActions');
 
 module.exports = {
   addMember: function(member) {
@@ -25,14 +25,23 @@ module.exports = {
   deleteMember: function(member) {
     wpouch.remove(member);
   },
-  search: function(query) {
+  fetchAllMembers: function() {
+    console.log("fetch all members again");
     var members = [];
-    wpouch.allDocs({include_docs: true, descending: true})
-    .then(function(result){
-      members.push(result.rows);
-    }).catch(function(err){
-      console.log('error fetching docs');
+    wpouch.allDocs({include_docs: true}, function(err, doc){
+      if (err) {
+        console.log('error fetching docs', err);
+      }
+      for (var i=0;i<doc.rows.length;i++) {
+        members.push(doc.rows[i].doc);
+      }
+      console.log(members);
+      MemberServerActions.onMembersUpdated({members});
+
+
     });
-    MemberActions.membersUpdated({members});
+    if (members.length === 0) {
+      console.log('no members yet');
+    }
   }
 };

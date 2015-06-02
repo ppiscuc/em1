@@ -1,5 +1,6 @@
 import alt from '../alt';
 import MemberActions from '../actions/MemberActions';
+import MemberServerActions from '../actions/MemberServerActions';
 
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
@@ -9,6 +10,7 @@ class MemberStore {
     //this.bindAction(MemberActions.create, this.create);
     console.log('store constructor');
     this.bindActions(MemberActions);
+    this.bindActions(MemberServerActions);
 
     this.selectedMember = null;
     this.loading = false;
@@ -52,15 +54,22 @@ class MemberStore {
       test: value
     });
   }
-  search() {
+  search(query) {
+    this.setState({
+      loading: true,
+    });
+  }
+  fetchAllMembers(){
     this.setState({
       loading: true
     });
   }
-  //from server actions
-  membersUpdated({members}) {
+  onMembersUpdated({members}) {
+    console.log('onMembersUpdated store');
+    console.log(members);
     this.setState({
-      members: members
+      loading: false,
+      members
     });
   }
   static all() {

@@ -11,14 +11,14 @@ var Search = React.createClass({
             return {
                 query: '',
                 loading: MemberStore.getState().loading,
-                members: MemberStore.all(),
+                members: MemberStore.getState().members,
                 error: MemberStore.getState().error
-            }
+            };
     },
     componentDidMount: function() {
       this.refs.searchInput.getDOMNode().focus();
       MemberStore.listen(this.update);
-      MemberActions.search();
+      MemberActions.fetchAllMembers();
     },
     componentWillUnmount: function() {
       MemberStore.unlisten(this.update);
@@ -26,7 +26,7 @@ var Search = React.createClass({
     update: function() {
       this.setState({
         loading: MemberStore.getState().loading,
-        members: MemberStore.all()
+        members: MemberStore.getState().members
       });
     },
     search: function(query) {
