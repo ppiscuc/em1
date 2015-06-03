@@ -3,7 +3,9 @@ var Router = require('react-router');
 var MemberActions = require('../actions/MemberActions.js');
 
 var MemberDetail = React.createClass({
-    mixins: [ Router.State ],
+    contextTypes: {
+          router: React.PropTypes.func
+    },
     handleSubmit: function(e) {
         //handle the submit of the form
         e.preventDefault();
@@ -79,8 +81,8 @@ var MemberDetail = React.createClass({
     },
     render: function() {
         var that = this;
-        var memberId = this.getParams().memberId;
-        var currentMember = this.props.memberData; //get memberData via props
+        //var memberId = this.context.router.getParams().memberId; FIXME we do not need this anymore
+        var currentMember = this.props.curmember; //get memberData via props
         return (
                 <div>
                     <p>MemberID: {memberId}</p>

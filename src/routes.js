@@ -17,13 +17,13 @@ var Dashboard = require('./components/dashboard.react');
 
 var routes = (
     <Route name="app" path="/" handler={Container}>
-        <Route name="search" handler={Search}>
-            <Route name="info" path=":memberId" handler={MemberDetail} />
+        <Route name="search" path="/search" handler={Search}>
+            <Route name="memberdetail" path="/search/:memberId" handler={MemberDetail} />
             <DefaultRoute handler={SearchStats} />
         </Route>
-        <Route name="newdata" handler={NewMember} />
-        <Route name="settings" handler={Settings} />
-        <DefaultRoute name="dashboard" handler={Dashboard} />
+        <Route name="newmember" path="/newmember" handler={NewMember} />
+        <Route name="settings" path="/settings" handler={Settings} />
+        <DefaultRoute name="dashboard" path="/dashboard" handler={Dashboard} />
     </Route>
 );
 

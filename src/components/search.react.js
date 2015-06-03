@@ -3,10 +3,12 @@ var Router = require('react-router');
 var _ = require('underscore');
 var MemberStore = require('../stores/MemberStore');
 var MemberActions = require('../actions/MemberActions');
-var MemberTable = require('./MemberTable.react');
+var MemberRow = require('./MemberRow.react');
 
 var Search = React.createClass({
-    mixins: [Router.State],
+    contextTypes: {
+          router: React.PropTypes.func
+    },
     getInitialState: function() {
             return {
                 query: '',
@@ -58,15 +60,40 @@ var Search = React.createClass({
     render: function () {
       var that = this;
         //DEBUG THIS let members = _.values(this.state.members);//FIXME
-        let dataloading = <div>loading ...</div>;
+      //check if we have a selected member
+      var curmember = this.context.router.getCurrentParams().memberId ? this.state.members[this.context.router.getCurrentParams().memberId] : {};
+      console.log('render', this.state.members);
+      let members = this.state.members;
+        let results;
         if (this.state.loading) {
-          dataloading = <div>loading ...</div>;
+          results = <div className="no-results">loading ...</div>;
         } else if (members.length) {
-          dataloading = <MemberTable members={members} handleSelect={this.handleSelect} />;
+          let memberRows = members.map(function(member){
+            return <MemberRow key={member._id} member={member} />;
+          });
+      let header = (
+        <thead>
+          <tr>
+            <th data-title="nume" key="nume">Nume</th>
+            <th data-title="prenume" key="prenume">Prenume</th>
+            <th data-title="datanasterii" key="datanasterii">Data nasterii</th>
+            <th data-title="mobile" key="mobile">Mobil</th>
+            <th data-title="oras" key="oras">Oras</th>
+          </tr>
+        </thead>
+      );
+      results = (
+                <table className="table table-stripped">
+                        {header}
+                        <tbody>
+                                {memberRows}
+                        </tbody>
+                </table>
+                );
         } else if (this.state.query.lrngth) {
-          dataloading = <div>Nu a fost gasit nici un membru.</div>;
+          results = <div>Nu a fost gasit nici un membru.</div>;
         } else {
-          dataloading = <div>Nici un membru.</div>;
+          results = <div>Nici un membru.</div>;
         }
         return (
           <div className="row">
@@ -75,11 +102,11 @@ var Search = React.createClass({
                 <input type="search" ref="searchInput" className="form-control"
                 placeholder="Cauta" onChange={that.handleChange}/>
                 <div className="results">
-                  {dataloading}
+                  {results}
                 </div>
               </div>
               <div className="col-md-4">
-                <Router.RouteHandler />
+                <Router.RouteHandler curmember={curmember} />
               </div>
             </div>
         );
