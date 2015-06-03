@@ -12,6 +12,7 @@ var Search = React.createClass({
     getInitialState: function() {
             return {
                 query: '',
+                currentMember: {},
                 loading: MemberStore.loading(),
                 members: MemberStore.getState().members,
                 filteredMembers: MemberStore.all(),
@@ -61,14 +62,15 @@ var Search = React.createClass({
       var that = this;
         //DEBUG THIS let members = _.values(this.state.members);//FIXME
       //check if we have a selected member
-      var curmember = this.context.router.getCurrentParams().memberId ? this.state.members[this.context.router.getCurrentParams().memberId] : {};
-      console.log('render', this.state.members);
-      let members = this.state.members;
-        let results;
-        if (this.state.loading) {
-          results = <div className="no-results">loading ...</div>;
-        } else if (members.length) {
-          let memberRows = members.map(function(member){
+      var currentmember = this.context.router.getCurrentParams().memberId ? this.state.members[this.context.router.getCurrentParams().memberId] : {};
+      console.log('render - filtered', this.state.filteredMembers);
+      console.log('render - current', this.state.currentMember);
+      let filteredMembers = this.state.filteredMembers;
+      let results;
+      if (this.state.loading) {
+        results = <div className="no-results">loading ...</div>;
+        } else if (filteredMembers.length) {
+          let memberRows = filteredMembers.map(function(member){
             return <MemberRow key={member._id} member={member} />;
           });
       let header = (
@@ -90,7 +92,7 @@ var Search = React.createClass({
                         </tbody>
                 </table>
                 );
-        } else if (this.state.query.lrngth) {
+        } else if (this.state.query.length) {
           results = <div>Nu a fost gasit nici un membru.</div>;
         } else {
           results = <div>Nici un membru.</div>;
@@ -106,7 +108,7 @@ var Search = React.createClass({
                 </div>
               </div>
               <div className="col-md-4">
-                <Router.RouteHandler curmember={curmember} />
+                <Router.RouteHandler currentmember={currentmember} />
               </div>
             </div>
         );

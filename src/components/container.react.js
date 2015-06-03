@@ -8,7 +8,7 @@ var Container = React.createClass({
     getInitialState: function() {
       return {
         errors: []
-      }
+      };
     },
     componentDidMount: function() {
       MemberStore.listen(this.update);

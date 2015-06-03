@@ -62,7 +62,7 @@ class MemberStore {
     }
     if (!query) {
       this.setState({
-        filteredMembers: this.state.members;
+        filteredMembers: this.state.members
       });
     } else {
       let filtered = _.filter(this.state.members, function(item){

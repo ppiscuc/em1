@@ -1,5 +1,6 @@
 import alt from '../alt';
 import PouchUtils from '../utils/PouchUtils';
+//do not mount router here
 
 class MemberActions {
   onSearch(query) {
@@ -33,6 +34,5 @@ class MemberActions {
   search(query) {
     this.dispatch(query);
   }
-  //server actions
 }
 export default alt.createActions(MemberActions);
