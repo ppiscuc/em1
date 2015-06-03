@@ -56,6 +56,7 @@ var Search = React.createClass({
       console.log(index);
     },
     render: function () {
+      var that = this;
         //DEBUG THIS let members = _.values(this.state.members);//FIXME
         let dataloading = <div>loading ...</div>;
         if (this.state.loading) {
@@ -70,9 +71,9 @@ var Search = React.createClass({
         return (
           <div className="row">
             <div className="col-md-8">
-              <div>Search for a member to see more details.</div>
+              <div>Cauta un membru pentru a vedea mai multe detalii.</div>
                 <input type="search" ref="searchInput" className="form-control"
-                placeholder="Cauta" onChange={this.handleChange}/>
+                placeholder="Cauta" onChange={that.handleChange}/>
                 <div className="results">
                   {dataloading}
                 </div>
