@@ -29,6 +29,10 @@ class MemberActions {
     this.dispatch({settings});
     PouchUtils.saveSettings(settings);
   }
+  fetchSettings() {
+    this.dispatch();
+    PouchUtils.fetchSettings();
+  }
   changeTest(value) {
     this.dispatch(value);
   }

@@ -11,6 +11,7 @@ var Settings = React.createClass({
   },
   componentDidMount: function() {
     MemberStore.listen(this.update);
+    MemberActions.fetchSettings();
   },
   componentWillUnmount: function() {
     MemberStore.unlisten(this.update);

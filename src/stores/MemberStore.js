@@ -99,10 +99,16 @@ class MemberStore {
     console.log('onSettingsUpdated store');
     console.log(settings);
     this.setState({
+      loading: false,
      church_name: settings.church_name,
      church_address: settings.church_address
     });
 
+  }
+  fetchSettings() {
+    this.setState({
+      loading: true
+    });
   }
   static all() {
     return this.getState().members;
