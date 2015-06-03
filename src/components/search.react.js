@@ -106,7 +106,7 @@ var Search = React.createClass({
         }
         return (
           <div className="row">
-            <div className="col-md-8">
+            <div className="col-md-8" id="searchContainer">
               <div>Cauta un membru pentru a vedea mai multe detalii.</div>
                 <input type="search" ref="searchInput" className="form-control"
                 placeholder="Cauta" onChange={that.handleChange}/>
