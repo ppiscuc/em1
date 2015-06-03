@@ -77,7 +77,7 @@ class MemberStore {
         loading: false,
         filteredMembers: filtered
       });
-      
+
   }
   }
   fetchAllMembers(){
@@ -90,7 +90,8 @@ class MemberStore {
     console.log(members);
     this.setState({
       loading: false,
-      members
+      members: members,
+      filteredMembers: members
     });
   }
   onSettingsUpdated({settings}) {
@@ -98,7 +99,7 @@ class MemberStore {
     console.log(settings);
     this.setState({
      church_name: settings.church_name,
-     church_address: settings.church_address 
+     church_address: settings.church_address
     });
 
   }
@@ -106,7 +107,7 @@ class MemberStore {
     return this.getState().members;
   }
   static loading() {
-   return this.loading;
+   return this.getState().loading;
   }
 }
 

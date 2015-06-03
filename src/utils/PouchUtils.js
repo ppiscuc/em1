@@ -45,9 +45,10 @@ module.exports = {
     }
   },
   saveSettings: function(settings) {
-   localStorage.setItem('settings', JSON.stringify(settings)); 
+   localStorage.setItem('settings', JSON.stringify(settings));
   },
-  fetchSettings() {
+  fetchSettings: function() {
     let settings = JSON.parse(localStorage.getItem('settings')) || {};
     MemberServerActions.onSettingsUpdated({settings});
+}
 };

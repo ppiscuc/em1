@@ -44,8 +44,8 @@ var Settings = React.createClass({
   handleSave: function(e) {
     e.preventDefault();
     let settings = {
-      this.state.church_name,
-      this.state.church_address
+      church_name: this.state.church_name,
+      church_address: this.state.church_address
     };
     console.log('handleSave', settings);
     //let errors = this.validate();

@@ -32,7 +32,7 @@ var Container = React.createClass({
                     <ul>
                         <li><Link to="app">Dashboard</Link></li>
                         <li><Link to="search">Cauta</Link></li>
-                        <li><Link to="newdata">Adauga</Link></li>
+                        <li><Link to="newmember">Adauga</Link></li>
                         <li><Link to="reports">Rapoarte</Link></li>
                         <li><Link to="settings">Setari</Link></li>
                     </ul>

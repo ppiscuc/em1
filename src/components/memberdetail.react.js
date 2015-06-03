@@ -82,12 +82,12 @@ var MemberDetail = React.createClass({
     render: function() {
         var that = this;
         //var memberId = this.context.router.getParams().memberId; FIXME we do not need this anymore
-        var currentMember = this.props.curmember; //get memberData via props
+        var currentMember = this.props.currentmember; //get memberData via props
         return (
                 <div>
-                    <p>MemberID: {memberId}</p>
+                    <p>MemberID: {currentMember._id}</p>
                     <form className="form-horizontal" onSubmit={this.handleSubmit}>
-                        {this.renderTextInput('first_name', 'Prenume', currentMember.firstname)}
+                        {this.renderTextInput('first_name', 'Prenume', currentMember.first_name)}
                         {this.renderTextInput('last_name', 'Nume')}
                         {this.renderTextInput('birth_date', 'Data nasterii', 'DD/MM/YYYY')}
                         {this.renderRadioInline('gender', 'Sex', {values: ['masculin', 'feminin'], defaultCheckedValue: 'masculin'})}
