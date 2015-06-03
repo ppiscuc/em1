@@ -56,16 +56,17 @@ class MemberStore {
     });
   }
   search(query) {
-    if (!this.state.members) {
+    let members = this.members; //FIXME should work this.members
+    if (!members) {
       console.log('no members to filter');
       return;
     }
     if (!query) {
       this.setState({
-        filteredMembers: this.state.members
+        filteredMembers: members
       });
     } else {
-      let filtered = _.filter(this.state.members, function(item){
+      let filtered = _.filter(members, function(item){
         let values = _.values(item);
         for (var i=0;i<values.length;i++) {
           if ((values[i]||"").toString().toLowerCase().indexOf(query.toLowerCase()) >=0 ) {

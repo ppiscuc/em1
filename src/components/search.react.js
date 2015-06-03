@@ -47,7 +47,7 @@ var Search = React.createClass({
       });
       MemberActions.search(query);
     },
-    handleChange: function() {
+    handleChange: function(e) {
       var query = e.target.value;
       if (query === this.state.query) {
         return;
