@@ -10,16 +10,19 @@ var Search = React.createClass({
     getInitialState: function() {
             return {
                 query: '',
-                loading: MemberStore.getState().loading,
+                loading: MemberStore.loading(),
                 members: MemberStore.getState().members,
+                filteredMembers: MemberStore.all(),
                 error: MemberStore.getState().error
             };
     },
     componentDidMount: function() {
+      console.log('componentDidMount');
       this.refs.searchInput.getDOMNode().focus();
       MemberStore.listen(this.update);
       if (this.state.members.length === 0) {
         //generate a fetch action
+        console.log("componentDidMount - members empty.fetching");
         MemberActions.fetchAllMembers();
       }
     },
@@ -27,9 +30,11 @@ var Search = React.createClass({
       MemberStore.unlisten(this.update);
     },
     update: function() {
+      console.log('update');
       this.setState({
         loading: MemberStore.getState().loading,
-        members: MemberStore.getState().members
+        members: MemberStore.getState().members,
+        filteredMembers: MemberStore.getState().filteredMembers
       });
     },
     search: function(query) {
@@ -51,10 +56,16 @@ var Search = React.createClass({
       console.log(index);
     },
     render: function () {
-        let members = _.values(this.state.members);
+        //DEBUG THIS let members = _.values(this.state.members);//FIXME
         let dataloading = <div>loading ...</div>;
-        if (members.length > 0 ) {
+        if (this.state.loading) {
+          dataloading = <div>loading ...</div>;
+        } else if (members.length) {
           dataloading = <MemberTable members={members} handleSelect={this.handleSelect} />;
+        } else if (this.state.query.lrngth) {
+          dataloading = <div>Nu a fost gasit nici un membru.</div>;
+        } else {
+          dataloading = <div>Nici un membru.</div>;
         }
         return (
           <div className="row">

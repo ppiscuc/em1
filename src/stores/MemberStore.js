@@ -1,6 +1,7 @@
 import alt from '../alt';
 import MemberActions from '../actions/MemberActions';
 import MemberServerActions from '../actions/MemberServerActions';
+import _ from 'underscore';
 
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
@@ -55,9 +56,29 @@ class MemberStore {
     });
   }
   search(query) {
-    this.setState({
-      loading: true,
-    });
+    if (!this.state.members) {
+      console.log('no members to filter');
+      return;
+    }
+    if (!query) {
+      this.setState({
+        filteredMembers: this.state.members;
+      });
+    } else {
+      let filtered = _.filter(this.state.members, function(item){
+        let values = _.values(item);
+        for (var i=0;i<values.length;i++) {
+          if ((values[i]||"").toString().toLowerCase().indexOf(query.toLowerCase()) >=0 ) {
+            return true;
+          }
+        }
+      });
+      this.setState({
+        loading: false,
+        filteredMembers: filtered
+      });
+      
+  }
   }
   fetchAllMembers(){
     this.setState({

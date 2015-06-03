@@ -9,11 +9,6 @@ module.exports = {
       }
     });
   },
-  _allMembers: function() {
-    wpouch.allDocs({include_docs: true, descending: true}, function(err, doc){
-      return doc.rows;
-    });
-  },
   updateMember: function(updatedmember) {
     console.log('updating member with _id', updatedmember._id);
     wpouch.put(updatedmember, function(err, result){
@@ -36,7 +31,7 @@ module.exports = {
         members.push(doc.rows[i].doc);
       }
       console.log(members);
-      //FIXME timer
+      //FIXME timer to simulate delay in loading of events
       //var stop = new Date().getTime();
       //while(new Date().getTime() < stop + 10000) {
       //    ;

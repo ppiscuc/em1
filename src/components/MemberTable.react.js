@@ -5,7 +5,6 @@ var _ = require('underscore');
 var RowWrapper = React.createClass({
   render: function() {
     return (
-      <div>
       <tr>
         <td>{this.props.data.first_name}</td>
         <td>{this.props.data.last_name}</td>
@@ -13,7 +12,6 @@ var RowWrapper = React.createClass({
         <td>{this.props.data.mobile}</td>
         <td>{this.props.data.city}</td>
       </tr>
-    </div>
     );
   }
 });
@@ -31,11 +29,15 @@ var MemberTable = React.createClass({
         </tr>
       </thead>
     );
-    var nodes = this.props.members.map(function(row){
-      return (
-        <RowWrapper onClick={that.props.handleSelect} key={row._id} data={row} />
-      );
-    });
+    if (!this.props.members) {
+      return (<div>no members loaded</div>);
+    }
+    let nodes = this.props.members.map(function(row){
+        return (
+          <RowWrapper onClick={that.props.handleSelect} key={row._id} data={row} />
+        );
+      });
+
     return (
       <table className="table table-stripped">
         {header}
