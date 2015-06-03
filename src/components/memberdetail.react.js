@@ -15,7 +15,7 @@ var MemberDetail = React.createClass({
         member.birth_date = React.findDOMNode(this.refs.birth_date).value.trim();
         member.gender = 'masculin';
         if (React.findDOMNode(this.refs.genderfeminin).checked) {
-            gender = 'feminin';
+            member.gender = 'feminin';
         }
         member.phone = React.findDOMNode(this.refs.phone).value.trim();
         member.mobile = React.findDOMNode(this.refs.mobile).value.trim();
@@ -60,11 +60,11 @@ var MemberDetail = React.createClass({
     },
     renderRadioInline: function(id, label, kwargs){
         var radios = kwargs.values.map(function(value){
-            var defaultChecked = (value == kwargs.defaultCheckedValue);
+            var defaultChecked = (value === kwargs.defaultCheckedValue);
             return (
                         <div className="radio" >
                         <label>
-                        <input type="radio" ref={id+value} name={id} value={value} defaultChecked={defaultChecked} />
+                        <input type="radio" ref={id + value} name={id} value={value} defaultChecked={defaultChecked} />
                         {value}
                         </label>
                         </div>
@@ -91,10 +91,10 @@ var MemberDetail = React.createClass({
                         {this.renderTextInput('last_name', 'Nume')}
                         {this.renderTextInput('birth_date', 'Data nasterii', 'DD/MM/YYYY')}
                         {this.renderRadioInline('gender', 'Sex', {values: ['masculin', 'feminin'], defaultCheckedValue: 'masculin'})}
-                        {this.renderTextInput('phone','Fix')}
+                        {this.renderTextInput('phone', 'Fix')}
                         {this.renderTextInput('mobile', 'Mobil')}
                         {this.renderTextInput('address', 'Adresa')}
-                        {this.renderTextInput('city','Oras')}
+                        {this.renderTextInput('city', 'Oras')}
                         {this.renderTextInput('email', 'Email', 'email@domain.com')}
                         {this.renderTextInput('baptised_date', 'Data botez', 'DD/MM/YYYY')}
                         {this.renderTextInput('baptised_church', 'Biserica botez')}

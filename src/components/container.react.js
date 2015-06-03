@@ -41,7 +41,7 @@ var Container = React.createClass({
 					          {this.state.errors}
                   </div>
                   <div id="runstate">
-                    <p>We are using io.js {remote.process.version} and Electron  {remote.process.versions['electron']}.</p>
+                    <p>We are using io.js {remote.process.version} and Electron {remote.process.versions['electron']}.</p>
                   </div>
                 </div>
                 <div className="col-md-10" id="overview">

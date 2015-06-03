@@ -1,6 +1,5 @@
 var React = require('react');
 var Router = require('react-router');
-var _ = require('underscore');
 
 
 var MemberRow = React.createClass({
@@ -8,10 +7,10 @@ var MemberRow = React.createClass({
         router: React.PropTypes.func
   },
   handleClick: function(element) {
-    var that=this;
+    var that = this;
     element.preventDefault();
     console.log('onClick');
-    this.context.router.transitionTo('memberdetails',{memberId: that.props.member._id});
+    this.context.router.transitionTo('memberdetails', {memberId: that.props.member._id});
   },
   render: function() {
     var that = this;

@@ -25,7 +25,7 @@ var Search = React.createClass({
       MemberStore.listen(this.update);
       if (this.state.members.length === 0) {
         //generate a fetch action
-        console.log("componentDidMount - members empty.fetching");
+        console.log('componentDidMount - members empty.fetching');
         MemberActions.fetchAllMembers();
       }
     },
@@ -63,7 +63,7 @@ var Search = React.createClass({
         //DEBUG THIS let members = _.values(this.state.members);//FIXME
       //check if we have a selected member
       let currentmember;
-      let sentMemberId = this.context.router.getCurrentParams().memberId  || {};
+      let sentMemberId = this.context.router.getCurrentParams().memberId || {};
       if (!_.isEmpty(sentMemberId)) {
         currentmember = _.find(this.state.members, function(mem){
           return (sentMemberId === mem._id);

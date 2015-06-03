@@ -75,11 +75,11 @@ renderTextInput: function(id, label, placeholder) {
     },
     renderRadioInline: function(id, label, kwargs){
         var radios = kwargs.values.map(function(value){
-            var defaultChecked = (value == kwargs.defaultCheckedValue);
+            var defaultChecked = (value === kwargs.defaultCheckedValue);
             return (
                         <div className="radio" >
                         <label>
-                        <input type="radio" ref={id+value} name={id} value={value} defaultChecked={defaultChecked} />
+                        <input type="radio" ref={id + value} name={id} value={value} defaultChecked={defaultChecked} />
                         {value}
                         </label>
                         </div>
