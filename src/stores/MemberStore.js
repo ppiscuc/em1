@@ -43,11 +43,11 @@ class MemberStore {
   onSelect(member) {
     this.selectedMember = member;
   }
-  onNewSettings({church_name, church_address}) {
-    console.log('STOR onNewSettings', church_name, church_address);
+  onNewSettings({settings}) {
+    console.log('STOR onNewSettings', settings);
     this.setState({
-      church_name,
-      church_address
+      church_name: settings.church_name,
+      church_address: settings.church_address
     });
   }
   changeTest(value) {
