@@ -12,6 +12,7 @@ var SearchStats = require('./components/searchstats.react');
 var NewMember = require('./components/newmember.react');
 var Settings = require('./components/settings.react');
 var Dashboard = require('./components/dashboard.react');
+var Reports = require('./components/reports.react');
 
 
 
@@ -22,6 +23,7 @@ var routes = (
             <DefaultRoute handler={SearchStats} />
         </Route>
         <Route name="newmember" path="/newmember" handler={NewMember} />
+        <Route name="reports" path="/reports" handler={Reports} />
         <Route name="settings" path="/settings" handler={Settings} />
         <DefaultRoute name="dashboard" path="/dashboard" handler={Dashboard} />
     </Route>

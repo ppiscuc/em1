@@ -43,10 +43,14 @@ var Settings = React.createClass({
   },
   handleSave: function(e) {
     e.preventDefault();
-    console.log('handleSave', this.state.church_name, this.state.church_address);
+    let settings = {
+      this.state.church_name,
+      this.state.church_address
+    };
+    console.log('handleSave', settings);
     //let errors = this.validate();
     //this.setState({errors});
-      MemberActions.onNewSettings(this.state.church_name, this.state.church_address);
+      MemberActions.onNewSettings({settings});
   },
   render: function() {
       return (

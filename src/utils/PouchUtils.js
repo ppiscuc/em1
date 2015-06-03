@@ -43,5 +43,11 @@ module.exports = {
     if (members.length === 0) {
       console.log('no members yet');
     }
-  }
+  },
+  saveSettings: function(settings) {
+   localStorage.setItem('settings', JSON.stringify(settings)); 
+  },
+  fetchSettings() {
+    let settings = JSON.parse(localStorage.getItem('settings')) || {};
+    MemberServerActions.onSettingsUpdated({settings});
 };

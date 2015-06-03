@@ -3,7 +3,7 @@ var Router = require('react-router');
 var _ = require('underscore');
 var MemberStore = require('../stores/MemberStore');
 var MemberActions = require('../actions/MemberActions');
-var MemberRow = require('./MemberRow.react');
+var MemberRow = require('./memberrow.react');
 
 var Search = React.createClass({
     contextTypes: {

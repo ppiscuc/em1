@@ -93,6 +93,15 @@ class MemberStore {
       members
     });
   }
+  onSettingsUpdated({settings}) {
+    console.log('onSettingsUpdated store');
+    console.log(settings);
+    this.setState({
+     church_name: settings.church_name,
+     church_address: settings.church_address 
+    });
+
+  }
   static all() {
     return this.getState().members;
   }

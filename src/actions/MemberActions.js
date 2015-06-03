@@ -18,15 +18,16 @@ class MemberActions {
   }
   onCreate (member) {
     member._id = new Date().toISOString();
-    PouchUtils.addMember(member);
     this.dispatch(member);
+    PouchUtils.addMember(member);
   }
   update (member) {
     this.dispatch({member});
   }
-  onNewSettings(church_name, church_address) {
+  onNewSettings({settings}) {
     console.log('ACT onNewSettings');
-    this.dispatch({church_name, church_address});
+    this.dispatch({settings});
+    PouchUtils.saveSettings(settings);
   }
   changeTest(value) {
     this.dispatch(value);
