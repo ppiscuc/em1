@@ -62,9 +62,16 @@ var Search = React.createClass({
       var that = this;
         //DEBUG THIS let members = _.values(this.state.members);//FIXME
       //check if we have a selected member
-      var currentmember = this.context.router.getCurrentParams().memberId ? this.state.members[this.context.router.getCurrentParams().memberId] : {};
+      let currentmember;
+      let sentMemberId = this.context.router.getCurrentParams().memberId  || {};
+      if (!_.isEmpty(sentMemberId)) {
+        currentmember = _.find(this.state.members, function(mem){
+          return (sentMemberId === mem._id);
+        });
+      } else {
+        currentmember = {};
+      }
       console.log('render - filtered', this.state.filteredMembers);
-      console.log('render - current', this.state.currentMember);
       let filteredMembers = this.state.filteredMembers;
       let results;
       if (this.state.loading) {
