@@ -54,9 +54,9 @@ var Settings = React.createClass({
       MemberActions.onNewSettings({settings});
   },
   render: function() {
-      return (
-              <div>
-                <h1>Settings</h1>
+      return (<div>
+              <div className="settings-panel">
+                <h3>Setari generale</h3>
                 <form className="form-horizontal">
                   <div className="form-group">
                       <label htmlFor='church_name' className="col-sm-4 control-label">Nume biserica</label>
@@ -81,7 +81,12 @@ var Settings = React.createClass({
                     </div>
                   </div>
                 </form>
+              </div>
+                <div className="settings-panel">
+                  <h3>Exporta datele</h3>
+                  <a className="btn btn-action" onClick={this.handleExport}> Exporta datele</a>
                 </div>
+              </div>
               );
   }
 });

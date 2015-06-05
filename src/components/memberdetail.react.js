@@ -35,7 +35,7 @@ var MemberDetail = React.createClass({
         return (
                 <div className="form-group">
                     <label htmlFor={id} className="col-sm-4 control-label" >{label}</label>
-                    <div className="col-sm-6">
+                    <div className="col-sm-8">
                         <input type="text" className="form-control" id={id} ref={id} placeholder={placeholder} defaultValue={defaultValue}/>
                     </div>
                 </div>
@@ -85,7 +85,7 @@ var MemberDetail = React.createClass({
         var currentMember = this.props.currentmember; //get memberData via props
         return (
                 <div>
-                    <p>MemberID: {currentMember._id}</p>
+                    <div className="detail-header">MemberID: {currentMember._id}</div>
                     <form className="form-horizontal" onSubmit={this.handleSubmit}>
                         {this.renderTextInput('first_name', 'Prenume', currentMember.first_name)}
                         {this.renderTextInput('last_name', 'Nume')}

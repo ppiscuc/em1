@@ -1,6 +1,6 @@
 @import "bootstrap/bootstrap.less";
 
-@font-size-base: 14px;
+@font-size-base: 13px;
 @font-regular:          "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
 @gray-darkest:          #233137;
@@ -38,7 +38,12 @@ html, body {
     @font-family: @font-regular;
 }
 //General
-.container {
+.row {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.container-fluid {
   padding: 0;
   margin: 0;
   height: 100%;
@@ -48,6 +53,9 @@ html, body {
 }
 #searchContainer {
   border-right: 1px solid #e1e8ef;
+  padding-left: 0;
+  //display: flex;
+  //flex:1 auto;
 }
 .row {
   width: 100%;
@@ -86,7 +94,40 @@ html, body {
   -webkit-flex: 0 1 auto;
   align-self: stretch;
 }
+//Panels
+.settings-panel{
+  flex: 1 auto;
+}
 //Forms
 .form-group {
   margin-bottom: 5px;
 }
+.control-label {
+  padding-right: 0;
+  padding-left: 5px;
+}
+.search-header {
+  display: flex;
+  flex-direction: column;
+  flex: 0 auto;
+  color: #7a8491;
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+}
+.detail-header {
+  flex: 1 auto;
+  color: #7a8491;
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+//.results {
+//  flex: 1 auto;
+//  display: flex;
+//}
+//.form-control {
+//  padding: 5px 5px;
+//  height: 30px;
+//}

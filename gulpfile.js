@@ -45,6 +45,7 @@ gulp.task('copy',function(){
 gulp.task('default', ['copy', 'js', 'styles'], function(){
   gulp.watch('src/**/*.js', ['js']);
   gulp.watch('index.html', ['copy']);
+  gulp.watch('styles/main.less', ['styles']);
 
   livereload.listen();
 
