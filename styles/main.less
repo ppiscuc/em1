@@ -131,3 +131,42 @@ html, body {
 //  padding: 5px 5px;
 //  height: 30px;
 //}
+//Nav
+a {
+  text-decoration: none;
+  background-color: transparent;
+}
+#navigator ul {
+  list-style: none;
+  padding-left: 20px;
+}
+#navigator ul a {
+    color: #7a8491;
+    cursor: default;
+    outline: none;
+    transition: color 0.25s;
+    margin-left: 12px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+#navigator ul a.active li {
+    color: white;
+    border-radius: 40px;
+    background-image: linear-gradient(-180deg, #00978e 4%, #1a7575 100%);
+}
+#navigator ul a:hover {
+  text-decoration: none;
+}
+#navigator ul a:hover li {
+  cursor: default;
+  border-radius: 40px;
+  background-color: #e1e8ef;
+}
+#navigator ul a:focus {
+  text-decoration: none;
+}
+#navigator ul li {
+  padding: 5px 12px;
+  display: flex;
+  flex-direction: row;
+}

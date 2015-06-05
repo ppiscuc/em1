@@ -29,10 +29,10 @@ var Container = React.createClass({
                 <div className="col-md-2" id="sidebar">
                   <div id="navigator">
                     <ul>
-                        <li><Link to="app">Dashboard</Link></li>
-                        <li><Link to="search">Cauta</Link></li>
-                        <li><Link to="newmember">Adauga</Link></li>
-                        <li><Link to="settings">Setari</Link></li>
+                        <Link to="dashboard"><li>Dashboard</li></Link>
+                        <Link to="search"><li>Cauta</li></Link>
+                        <Link to="newmember"><li>Adauga</li></Link>
+                        <Link to="settings"><li>Setari</li></Link>
                     </ul>
 					          {this.state.errors}
                   </div>
