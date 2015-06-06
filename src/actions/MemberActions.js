@@ -33,6 +33,10 @@ class MemberActions {
     this.dispatch();
     PouchUtils.fetchSettings();
   }
+  onExportData({members}) {
+    this.dispatch();
+    PouchUtils.exportData(members);
+  }
   changeTest(value) {
     this.dispatch(value);
   }

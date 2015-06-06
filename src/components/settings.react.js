@@ -31,6 +31,7 @@ var Settings = React.createClass({
 
   },
   handleChange: function(e) {
+    e.preventDefault();
     var that = this;
     if (e.target === this.refs.church_name.getDOMNode()) {
       that.setState({
@@ -52,6 +53,12 @@ var Settings = React.createClass({
     //let errors = this.validate();
     //this.setState({errors});
       MemberActions.onNewSettings({settings});
+  },
+  handleExport: function(e) {
+    e.preventDefault();
+    let members = MemberStore.all();
+    console.log('handleExport');
+    MemberActions.onExportData({members});
   },
   render: function() {
       return (<div>

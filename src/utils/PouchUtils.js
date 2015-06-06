@@ -1,3 +1,5 @@
+var _ = require('underscore');
+var fs = require('fs');
 var PouchDB = require('pouchdb');
 var MemberServerActions = require('../actions/MemberServerActions');
 
@@ -50,5 +52,38 @@ module.exports = {
   fetchSettings: function() {
     let settings = JSON.parse(localStorage.getItem('settings')) || {};
     MemberServerActions.onSettingsUpdated({settings});
-}
+},
+  exportData: function(members) {
+    let header = ['first_name',
+                  'last_name',
+                  'birth_date',
+                  'gender',
+                  'phone',
+                  'mobile',
+                  'address',
+                  'city',
+                  'email',
+                  'baptised_date',
+                  'baptised_church',
+                  'membership_status',
+                  'member_since',
+                  'marital_status',
+                  'details',
+                  '_id',
+                  '_rev'];
+    let csvheader = header.join(',');
+    let csv = '';
+    csv += csvheader + '\r\n';
+    _.each(members, function(member, i){
+      console.log(i, member);
+      let line = '';
+      _.each(member, function(mvalue, mkey){
+        console.log(mkey, mvalue);
+          line += mvalue + ',';
+      });
+      line = line.slice(0, line.length - 1);
+      csv += line + '\r\n';
+    });
+    console.log(csv);
+  }
 };
