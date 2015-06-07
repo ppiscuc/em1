@@ -22,10 +22,10 @@ var Settings = React.createClass({
   validate () {
     let errors = {};
     if (!validator.isAlphaNumberic(this.state.church_name)) {
-      errors.church_name = "Valoarea trebuie sa fie alfanumerica";
+      errors.church_name = 'Valoarea trebuie sa fie alfanumerica';
     }
     if (!validator.isAlphaNumberic(this.state.church_address)) {
-      errors.church_address = "Valoarea trebuie sa fie alfanumerica";
+      errors.church_address = 'Valoarea trebuie sa fie alfanumerica';
     }
     return errors;
 
@@ -53,6 +53,23 @@ var Settings = React.createClass({
     //let errors = this.validate();
     //this.setState({errors});
       MemberActions.onNewSettings({settings});
+  },
+  handleImport: function(e) {
+    e.preventDefault();
+    let that = this;
+    let reader = new FileReader();
+    let file = this.refs.file.getDOMNode().files[0];
+
+    reader.onload = function(output) {
+      console.log(output.target.result);
+      that.setState({
+        file: output.target.result
+      });
+      console.log(file.name);
+      console.log(file.size);
+    };
+    reader.readAsDataURL(file);
+
   },
   handleExport: function(e) {
     e.preventDefault();
@@ -89,6 +106,19 @@ var Settings = React.createClass({
                   </div>
                 </form>
               </div>
+                <div className="settings-panel">
+                  <h3>Importa datele</h3>
+                  <form className="form-horizontal" ref="form" enctype="multipart/form-data">
+                    <div className="form-group">
+                      <div className="col-sm-4"></div>
+                      <div className="col-sm-6"><input type="file" ref="file" name="file"/></div>
+                    </div>
+                    <div className="form-group">
+                      <div className="col-sm-4"></div>
+                      <div className="col-sm-6"><button className="btn btn-action" type="submit" onClick={this.handleImport}>Upload</button></div>
+                    </div>
+                  </form>
+                </div>
                 <div className="settings-panel">
                   <h3>Exporta datele</h3>
                   <a className="btn btn-action" onClick={this.handleExport}> Exporta datele</a>
