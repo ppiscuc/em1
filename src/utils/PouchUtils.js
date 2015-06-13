@@ -61,5 +61,6 @@ module.exports = {
       newline: '\r\n'
     });
     console.log(csvdata);
+    MemberServerActions.onExportCSV({csvdata});
   }
   };

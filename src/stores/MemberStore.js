@@ -105,6 +105,13 @@ class MemberStore {
     });
 
   }
+  onExportCSV({csvdata}) {
+    console.log('onExportCSV');
+    console.log(csvdata);
+    this.setState({
+      memberscsv: csvdata
+    });
+  }
   fetchSettings() {
     this.setState({
       loading: true

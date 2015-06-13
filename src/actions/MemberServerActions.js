@@ -10,5 +10,8 @@ class MemberServerActions {
   onSettingsUpdated({settings}) {
     this.dispatch({settings});
   }
+  onExportCSV({csvdata}) {
+    this.dispatch({csvdata});
+  }
 }
 export default alt.createActions(MemberServerActions);

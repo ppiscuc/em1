@@ -3,7 +3,13 @@ var Router = require('react-router');
 var MemberStore = require('../stores/MemberStore');
 var validator = require('validator');
 var _ = require('underscore');
+var fs = require('fs');
+var path = require('path');
 var MemberActions = require('../actions/MemberActions');
+var babyparse = require('babyparse');
+var shell = require('shell');
+
+var remote = require('remote');
 
 var Settings = React.createClass({
   getInitialState: function() {
@@ -19,7 +25,7 @@ var Settings = React.createClass({
   update() {
     this.setState(MemberStore.getState());
   },
-  validate () {
+  validate: function() {
     let errors = {};
     if (!validator.isAlphaNumberic(this.state.church_name)) {
       errors.church_name = 'Valoarea trebuie sa fie alfanumerica';
@@ -74,8 +80,26 @@ var Settings = React.createClass({
   handleExport: function(e) {
     e.preventDefault();
     let members = MemberStore.all();
-    console.log('handleExport');
-    MemberActions.onExportData({members});
+    let memberscsv = babyparse.unparse(members, {
+      quotes: false,
+      delimiter: ',',
+      newline: '\r\n'
+    });
+    console.log(memberscsv);
+
+    if (!memberscsv) {
+      console.log('no members to download');
+      return false;
+    }
+    let filePath = path.join(__dirname, '..', 'export.csv')
+    //save it to a file
+    fs.writeFile(filePath, memberscsv, function(err){
+      if (err) {
+        return console.log('file not written');
+      }
+      console.log('file saved');
+      shell.openItem(filePath);
+    });
   },
   render: function() {
       return (<div>
@@ -121,7 +145,7 @@ var Settings = React.createClass({
                 </div>
                 <div className="settings-panel">
                   <h3>Exporta datele</h3>
-                  <a className="btn btn-action" onClick={this.handleExport}> Exporta datele</a>
+                  <button className="btn btn-action" onClick={this.handleExport}> Exporta datele</button>
                 </div>
               </div>
               );
