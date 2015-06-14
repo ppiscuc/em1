@@ -62,8 +62,9 @@ module.exports = {
     if (results.errors.message) {
       console.log(results.errors);
     } else {
-      console.log('ok');
-      console.log(results.data);
+      let members = results.data;
+      console.log(members);
+      MemberServerActions.onMembersUpdated({members});
     }
 
   }
