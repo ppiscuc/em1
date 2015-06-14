@@ -2,7 +2,6 @@ var React = require('react/addons');
 var Router = require('react-router');
 var MemberStore = require('../stores/MemberStore');
 var validator = require('validator');
-var _ = require('underscore');
 var fs = require('fs');
 var path = require('path');
 var MemberActions = require('../actions/MemberActions');
@@ -67,14 +66,11 @@ var Settings = React.createClass({
     let file = this.refs.file.getDOMNode().files[0];
 
     reader.onload = function(output) {
-      console.log(output.target.result);
-      that.setState({
-        file: output.target.result
-      });
-      console.log(file.name);
-      console.log(file.size);
+      let result = output.target.result;
+      console.log(result);
+      MemberActions.onImport(result);
     };
-    reader.readAsDataURL(file);
+    reader.readAsText(file);
 
   },
   handleExport: function(e) {

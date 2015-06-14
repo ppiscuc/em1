@@ -24,13 +24,13 @@ module.exports = {
     wpouch.remove(member);
   },
   fetchAllMembers: function() {
-    console.log("fetch all members again");
+    console.log('fetch all members again');
     var members = [];
     wpouch.allDocs({include_docs: true}, function(err, doc){
       if (err) {
         console.log('error fetching docs', err);
       }
-      for (var i=0;i<doc.rows.length;i++) {
+      for (var i = 0; i < doc.rows.length; i++) {
         members.push(doc.rows[i].doc);
       }
       console.log(members);
@@ -53,14 +53,19 @@ module.exports = {
   fetchSettings: function() {
     let settings = JSON.parse(localStorage.getItem('settings')) || {};
     MemberServerActions.onSettingsUpdated({settings});
-},
-  exportData: function(members) {
-    let csvdata = babyparse.unparse(members, {
-      quotes: false,
-      delimiter: ',',
-      newline: '\r\n'
+  },
+  onImport: function(csvinput) {
+    let results = babyparse.parse(csvinput, {
+      header: true,
+      dynamicTyping: true
     });
-    console.log(csvdata);
-    MemberServerActions.onExportCSV({csvdata});
+    if (results.errors.message) {
+      console.log(results.errors);
+    } else {
+      console.log('ok');
+      console.log(results.data);
+    }
+
   }
+
   };

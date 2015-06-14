@@ -33,9 +33,9 @@ class MemberActions {
     this.dispatch();
     PouchUtils.fetchSettings();
   }
-  onExportData({members}) {
+  onImport(csvinput){
     this.dispatch();
-    PouchUtils.exportData(members);
+    PouchUtils.onImport(csvinput);
   }
   changeTest(value) {
     this.dispatch(value);

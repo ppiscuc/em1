@@ -38,7 +38,7 @@ app.on('ready', function(){
         'min-height': 600,
         'standard-window': false,
         resizable: true,
-        frame: false,
+        frame: true,
         show: false,
         title: 'EM'
         });

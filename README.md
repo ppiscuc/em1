@@ -19,7 +19,7 @@ Instaleaza node si npm.
 ```sh
 $ git clone <repo>
 $ cd em-electron
-$ npm install
+$ npm install --dev
 $ gulp
 ```
 
