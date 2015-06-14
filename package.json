@@ -7,6 +7,7 @@
   "scripts": {
     "start": "gulp",
     "release": "gulp release",
+    "build": "electron-packager . EM --platform=win32 --arch=x64 --version=0.26.1 --out=dist --ignore=node_modules/electron",
     "lint": "jsxhint src",
     "reset": "gulp reset"
   },
@@ -35,6 +36,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^3.1.11",
+    "electron-packager": "^4.1.2",
     "eslint": "^0.22.1",
     "eslint-plugin-react": "^2.5.0",
     "grunt-browserify": "^3.8.0",
