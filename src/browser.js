@@ -10,7 +10,7 @@ var path = require('path');
 process.env.NODE_PATH = path.join(__dirname,'/../node_modules');
 process.chdir(path.join(__dirname,'..'));
 process.env.PATH = '/usr/local/bin:' + process.env.PATH;
-process.env.NODE_ENV="development";
+process.env.NODE_ENV = "development";
 
 
 require('crash-reporter').start();
@@ -39,11 +39,11 @@ app.on('ready', function(){
         'standard-window': false,
         resizable: true,
         frame: true,
-        show: false,
+        show: true,
         title: 'EM'
         });
 
-    mainWindow.loadUrl('file://' + path.join(__dirname,'..', 'build/index.html'));
+    mainWindow.loadUrl('file://' + path.join(__dirname, '..', 'build/index.html'));
     //open devtools
     app.on('activate-with-no-open-windows', function(){
         if (mainWindow) {

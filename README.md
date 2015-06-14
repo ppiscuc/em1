@@ -2,26 +2,22 @@
 
 Aplicatie de management a membrilor unei biserici.
 ### Version
+
 0.1.0
+
+### Download
+
+Linkurile de download vor fi disponibile ulterior.
 
 ### Tech
 
 EM foloseste urmatoarele technologii:
 
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [node.js] - evented I/O for the backend
-* [Gulp] - the streaming build system
-* [jQuery] - duh
-
-### Install
-
-Instaleaza node si npm.
-```sh
-$ git clone <repo>
-$ cd em-electron
-$ npm install --dev
-$ gulp
-```
+* [node.js] - JavaScript backend
+* [electron] - aplicatii pentru desktop folosind technologii web
+* [reactjs] - librarie pentru User Interfaces
+* [Twitter Bootstrap] - UI boilerplate
+* [Gulp] - streaming build system
 
 ### Development
 
@@ -29,18 +25,31 @@ Vrei sa contribui? Foarte bine!
 
 Cum sa contribui:
 
+Instaleaza git, node si npm. Indiferent daca folosti OS X, Linux sau Windows, asigurate ca binarele sunt introduse in PATH.
+Deschide un terminal si executa:
+
+```sh
+$ git clone <repo>
+$ cd em-electron
+$ npm install
+$ npm install gulp -g
+$ gulp
+```
 
 ### Todo's
 
 export/import
+upgrade procedure
 
 License
 ----
 
-Apache 2.0
+* [apache] -  Apache 2.0
 
 
 [node.js]:http://nodejs.org
+[electron]:http://electron.atom.io/
+[reactjs]:https://facebook.github.io/react/
 [Twitter Bootstrap]:http://twitter.github.com/bootstrap/
-[jQuery]:http://jquery.com
 [Gulp]:http://gulpjs.com
+[apache]:https://www.apache.org/licenses/LICENSE-2.0.html
