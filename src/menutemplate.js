@@ -1,6 +1,8 @@
 var remote = require('remote');
+var shell = require('shell');
 var app = remote.require('app');
 var BrowserWindow = remote.require('browser-window');
+var dialog = require('dialog');
 
 var CmdOrCtl = function() {
   if (process.platform === 'win32') {
@@ -17,7 +19,12 @@ var Menutemplate = function() {
             submenu: [
                 {
                 label: 'About EM',
-                selector: 'orderFrontStandardAboutPanel:'
+                click: function() {
+                  dialog.showMessageBox({
+                    message: 'Aplicatie de management a membrilor unei biserici.\r\n Em1 0.1.0',
+                    buttons: ['OK']
+                  });
+                }
             },
             {
                 type: 'separator'
@@ -63,12 +70,12 @@ var Menutemplate = function() {
     submenu: [
       {
         label: 'Reload',
-        accelerator: 'Command+R',
+        accelerator: CmdOrCtl() + '+R',
         click: function() { BrowserWindow.getFocusedWindow().reloadIgnoringCache(); }
       },
       {
         label: 'Toggle DevTools',
-        accelerator: 'Alt+Command+I',
+        accelerator: 'Alt+' + CmdOrCtl() + '+I',
         click: function() { BrowserWindow.getFocusedWindow().toggleDevTools(); }
       },
     ]

@@ -8,7 +8,7 @@ var Router = require('react-router');
 var routerContainer = require('./router');
 var template = require('./menutemplate');
 var path = require('path');
-var PouchDB = require('PouchDB');
+var PouchDB = require('pouchdb');
 //actions
 
 if (typeof window.wpouch !== 'undefined') {
