@@ -50,11 +50,6 @@ class MemberStore {
       church_address: settings.church_address
     });
   }
-  changeTest(value) {
-    this.setState({
-      test: value
-    });
-  }
   search(query) {
     let members = this.members; //FIXME should work this.members
     if (!members) {

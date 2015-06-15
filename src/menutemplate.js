@@ -21,9 +21,10 @@ var Menutemplate = function() {
                 label: 'About EM',
                 click: function() {
                   dialog.showMessageBox({
-                    message: 'Aplicatie de management a membrilor unei biserici.\r\n Em1 0.1.0',
+                    message: 'Aplicatie de management a membrilor unei biserici.\r\n Em1 versiunea 0.1.0',
                     buttons: ['OK']
                   });
+                  return;
                 }
             },
             {
@@ -83,9 +84,9 @@ var Menutemplate = function() {
   {
     label: 'Help',
     submenu: [{
-      label: 'Trimite feedback sau eror',
+      label: 'Trimite feedback sau erori',
       click: function() {
-        shell.openExternal('https://github.com/ppiscuc/em1/issues/new');
+        shell.openExternal('http://ppiscuc.github.io/em1/');
       }
     }]
   },

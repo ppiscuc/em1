@@ -37,9 +37,6 @@ class MemberActions {
     this.dispatch();
     PouchUtils.onImport(csvinput);
   }
-  changeTest(value) {
-    this.dispatch(value);
-  }
   search(query) {
     this.dispatch(query);
   }
