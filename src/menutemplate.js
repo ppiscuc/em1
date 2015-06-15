@@ -2,6 +2,13 @@ var remote = require('remote');
 var app = remote.require('app');
 var BrowserWindow = remote.require('browser-window');
 
+var CmdOrCtl = function() {
+  if (process.platform === 'win32') {
+    return 'Ctrl';
+  } else {
+    return 'Command';
+  }
+}
 
 var Menutemplate = function() {
     return [
@@ -31,22 +38,22 @@ var Menutemplate = function() {
             submenu: [
                 {
                     label: 'Cut',
-                    accelerator: 'Command+X',
+                    accelerator: CmdOrCtl() + '+X',
                     selector: 'cut:'
                 },
                 {
                     label: 'Copy',
-                    accelerator: 'Command+C',
+                    accelerator: CmdOrCtl() + '+C',
                     selector: 'copy:'
                 },
                 {
                     label: 'Paste',
-                    accelerator: 'Command+V',
+                    accelerator: CmdOrCtl() + 'V',
                     selector: 'paste:'
                 },
                 {
                     label: 'Select All',
-                    accelerator: 'Command+A',
+                    accelerator: CmdOrCtl() + '+A',
                     selector: 'selectAll:'
                 }
             ]
@@ -67,30 +74,13 @@ var Menutemplate = function() {
     ]
   },
   {
-    label: 'Window',
-    submenu: [
-      {
-        label: 'Minimize',
-        accelerator: 'Command+M',
-        selector: 'performMiniaturize:'
-      },
-      {
-        label: 'Close',
-        accelerator: 'Command+W',
-        selector: 'performClose:'
-      },
-      {
-        type: 'separator'
-      },
-      {
-        label: 'Bring All to Front',
-        selector: 'arrangeInFront:'
-      },
-    ]
-  },
-  {
     label: 'Help',
-    submenu: []
+    submenu: [{
+      label: 'Trimite feedback sau eror',
+      click: function() {
+        shell.openExternal('https://github.com/ppiscuc/em1/issues/new');
+      }
+    }]
   },
 ];
 };

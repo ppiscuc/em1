@@ -1,6 +1,6 @@
 {
   "name": "EM1",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Paul Piscuc",
   "description": "aplicatie de management al membrilor",
   "main": "build/browser.js",
