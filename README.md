@@ -1,6 +1,6 @@
-# EM
+# EM1
 
-Aplicatie de management a membrilor unei biserici.
+Aplicatie de evidenta a membrilor unei biserici.
 ### Version
 
 0.1.0
@@ -11,7 +11,7 @@ Linkurile de download vor fi disponibile ulterior.
 
 ### Tech
 
-EM foloseste urmatoarele technologii:
+EM1 foloseste urmatoarele technologii:
 
 * [node.js] - JavaScript backend
 * [electron] - aplicatii pentru desktop folosind technologii web
