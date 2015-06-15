@@ -51,7 +51,7 @@ renderTextInput: function(id, label, placeholder) {
                 <div className="form-group">
                     <label htmlFor={id} className="col-sm-4 control-label" >{label}</label>
                     <div className="col-sm-6">
-                        <input type="text" className="form-control" id={id} ref={id} placeholder={placeholder} />
+                        <input type="text" className="form-control input-sm" id={id} ref={id} placeholder={placeholder} />
                     </div>
                 </div>
                 );
@@ -66,7 +66,7 @@ renderTextInput: function(id, label, placeholder) {
                 <div className="form-group">
                     <label htmlFor={id} className="col-sm-4 control-label">{label}</label>
                     <div className="col-sm-6">
-                        <select className="form-control" id={id} ref={id}>
+                        <select className="form-control input-sm" id={id} ref={id}>
                             {options}
                         </select>
                     </div>

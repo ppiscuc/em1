@@ -105,7 +105,7 @@ var Settings = React.createClass({
                   <div className="form-group">
                       <label htmlFor='church_name' className="col-sm-4 control-label">Nume biserica</label>
                       <div className="col-sm-6">
-                          <input type="text" className="form-control" name='church_name' ref='church_name' placeholder='Nume biserica' value={this.state.church_name} onChange={this.handleChange} />
+                          <input type="text" className="form-control input-sm" name='church_name' ref='church_name' placeholder='Nume biserica' value={this.state.church_name} onChange={this.handleChange} />
                             <p className="error-message">{this.state.errors}</p>
 
                       </div>
@@ -113,7 +113,7 @@ var Settings = React.createClass({
                   <div className="form-group">
                       <label htmlFor="church_address" className="col-sm-4 control-label">Adresa</label>
                       <div className="col-sm-6">
-                          <input type="text" className="form-control" name='church_address' ref='church_address' placeholder="Adresa" value={this.state.church_address} onChange={this.handleChange} />
+                          <input type="text" className="form-control input-sm" name='church_address' ref='church_address' placeholder="Adresa" value={this.state.church_address} onChange={this.handleChange} />
                             <p className="error-message">{this.state.errors}</p>
 
                       </div>
