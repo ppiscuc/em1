@@ -23,7 +23,6 @@
     "alt": "^0.16.6",
     "babyparse": "^0.4.3",
     "bluebird": "^2.9.27",
-    "jquery": "^2.1.4",
     "object-assign": "^2.0.0",
     "parseUri": "^1.2.3-2",
     "pouchdb": "^3.5.0",
