@@ -23,11 +23,6 @@ var Search = React.createClass({
       console.log('componentDidMount');
       this.refs.searchInput.getDOMNode().focus();
       MemberStore.listen(this.update);
-      if (this.state.members.length === 0) {
-        //generate a fetch action
-        console.log('componentDidMount - members empty.fetching');
-        MemberActions.fetchAllMembers();
-      }
     },
     componentWillUnmount: function() {
       MemberStore.unlisten(this.update);

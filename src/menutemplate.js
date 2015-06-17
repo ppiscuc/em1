@@ -5,10 +5,10 @@ var BrowserWindow = remote.require('browser-window');
 var dialog = remote.require('dialog');
 
 var CmdOrCtl = function() {
-  if (process.platform === 'win32') {
-    return 'Ctrl';
-  } else {
+  if (process.platform === 'darwin') {
     return 'Command';
+  } else {
+    return 'Ctrl';
   }
 }
 
