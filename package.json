@@ -7,7 +7,8 @@
   "scripts": {
     "start": "gulp",
     "release": "gulp release",
-    "build": "electron-packager . EM1 --platform=win32 --arch=x64 --version=0.26.1 --out=dist --ignore=node_modules/electron --ignore=src --ignore=gulpfile.js",
+    "build": "node release.js",
+    "build-all": "node release.js --all",
     "lint": "jsxhint src",
     "reset": "gulp reset"
   },
@@ -50,6 +51,8 @@
     "gulp-shell": "^0.4.1",
     "gulp-util": "^3.0.4",
     "jsxhint": "^0.15.0",
-    "react-tools": "^0.13.3"
+    "react-tools": "^0.13.3",
+    "shelljs": "~0.5.1",
+    "rimraf": "~2.4.0"
   }
 }
