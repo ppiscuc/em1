@@ -22,29 +22,46 @@ var Dashboard = React.createClass({
   },
     render: function () {
       let members = this.state.members;
+      let memberscount = members.length;
       let church_name = this.state.church_name;
       let church_address = this.state.church_address;
       let casatoriti = _.filter(members, function(member){
         return (member.marital_status === 'casatorit');  
-      });
+      }).length;
       let vaduvi = _.filter(members, function(member){
         return (member.marital_status === 'vaduv');
-      });
-      let casatoriti;
-      let copii;
-      let batrani;
+      }).length;
+      let today = new Date();
+      let copii = _.filter(members, function(member){
+        let timestamp = Date.parse(member.birth_date);
+        if (isNaN(timestamp)===true) {
+          return false;
+        }
+        let bdate = new Date(timestamp);
+        let yearsapart = new Date(today - bdate).getFullYear() - 1970;
+        return (yearsapart <= 18);
+      }).length;
+      let batrani = _.filter(members, function(member){
+        let timestamp = Date.parse(member.birth_date);
+        if (isNaN(timestamp)===true) {
+          return false;
+        }
+        let bdate = new Date(timestamp);
+        let yearsapart = new Date(today - bdate).getFullYear() - 1970;
+        return (yearsapart >= 60);
+      }).length;
         return (
           <div>
             <h1>EM1</h1>
             <p class="lead">O aplicatie pentru evidenta membrilor unei biserici</p>
-            <h3>{church_name}<h3>
-            <h4>{church_address}<h4>
+            <h3>{church_name}</h3>
+            <h4>{church_address}</h4>
             <strong>Statistici</strong>
-            <p>{members.length} membrii </p>
-            <p>{casatoriti.length} membrii casatoriti</p>
-            <p>{vaduvi.length} vaduvi</p>
-            <p>{copii.length} copii</p>
-            <p>{batrani.length} batrani</p>
+            <p>{memberscount} membrii </p>
+            <p>{casatoriti} membrii casatoriti</p>
+            <p>{vaduvi} vaduvi</p>
+            <p>{copii} copii</p>
+            <p>{batrani} batrani</p>
           </div>
         );
     }

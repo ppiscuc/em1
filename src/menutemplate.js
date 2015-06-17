@@ -2,7 +2,7 @@ var remote = require('remote');
 var shell = require('shell');
 var app = remote.require('app');
 var BrowserWindow = remote.require('browser-window');
-var dialog = require('dialog');
+var dialog = remote.require('dialog');
 
 var CmdOrCtl = function() {
   if (process.platform === 'win32') {
