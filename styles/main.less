@@ -37,6 +37,10 @@ html, body {
     -webkit-user-drag: none;
     @font-family: @font-regular;
 }
+.no-gutter > [class*='col-'] {
+  padding-right: 0;
+  padding-left: 0;
+}
 //General
 .row {
   margin: 0;
@@ -160,4 +164,25 @@ a {
   padding: 5px 12px;
   display: flex;
   flex-direction: row;
+}
+//Dashboard
+.title {
+  font-size: 34px;
+  color: #333;
+  font-weight: bold;
+  margin-top: 80px;
+  margin-left: 30px;
+}
+p.lead {
+  margin-left: 30px;
+  margin-bottom: 100px;
+}
+.intro {
+  font-size: 14px;
+  color: #5E5E5E;
+  line-height: 24px;
+  padding-left: 30px;
+  padding-top: 30px;
+  width: 100%;
+  background: #FAFAFA none repeat scroll 0% 0%;
 }

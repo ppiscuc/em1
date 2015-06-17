@@ -25,7 +25,7 @@ var Container = React.createClass({
     },
     render: function () {
         return (
-            <div className="row row-eq-height">
+            <div className="row row-eq-height no-gutter">
                 <div className="col-md-2" id="sidebar">
                   <div id="navigator">
                     <ul>

@@ -56,9 +56,12 @@ var Dashboard = React.createClass({
         return (yearsapart >= 60);
       }).length;
         return (
-          <div>
-            <h1>EM1</h1>
-            <p class="lead">O aplicatie pentru evidenta membrilor unei biserici</p>
+          <div className="container-fluid">
+            <div className="container">
+            <h2 className="title">EM1</h2>
+            <p className="lead">O aplicatie pentru evidenta membrilor unei biserici</p>
+            </div>
+            <div className="container intro">
             <h3>{church_name}</h3>
             <h4>{church_address}</h4>
             <strong>Statistici</strong>
@@ -67,6 +70,7 @@ var Dashboard = React.createClass({
             <p>{vaduvi} vaduvi</p>
             <p>{copii} copii</p>
             <p>{batrani} batrani</p>
+            </div>
           </div>
         );
     }
