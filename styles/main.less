@@ -1,30 +1,21 @@
 @import "bootstrap/bootstrap.less";
 
 @font-size-base: 13px;
-@font-regular:          "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-
-@gray-darkest:          #233137;
-@gray-darker:           #556473;
-@gray-normal:           #7A8491;
-@gray-light:            #9AA7BB;
-@gray-lighter:          #C4CDDA;
-@gray-lightest:         #E1E8EF;
-
-
+@font-regular: "Roboto", sans-serif;
 
 h2 {
   font-size: 18px;
-  color: @gray-normal;
+  color: #7A8491;
 }
 
 h3 {
   font-size: 14px;
-  color: @gray-darkest;
+  color: #233137;
 }
 
 h4 {
   font-size: 13px;
-  color: @gray-darker;
+  color: #556473;
   font-weight: 500;
 }
 
@@ -35,7 +26,8 @@ html, body {
     background: none;
     -webkit-user-select: none;
     -webkit-user-drag: none;
-    @font-family: @font-regular;
+    font-family: @font-regular;
+    cursor:default;
 }
 .no-gutter > [class*='col-'] {
   padding-right: 0;

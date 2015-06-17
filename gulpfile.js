@@ -40,6 +40,10 @@ gulp.task('copy',function(){
   gulp.src('index.html')
   .pipe(gulp.dest('./build'))
   .pipe(gulpif(options.dev,livereload()));
+
+  gulp.src('fonts/**')
+  .pipe(gulp.dest('./build'))
+  .pipe(gulpif(options.dev,livereload()));
 });
 
 gulp.task('default', ['copy', 'js', 'styles'], function(){
