@@ -54,10 +54,83 @@ module.exports = function(grunt) {
   clean: {
     release: ['build/', 'dist/', 'installer/'],
   },
+  less: {
+    options: {
+	sourceMapFileInline: true
+    },
+    dist: {
+	files: {
+          'build/main.css':'styles/main.less'
+	}
+    }
+  },
+  shell: {
+    electron: {
+      command: electron + ' ' + 'build',
+      options: {
+        async: true,
+        execOptions: {
+          env: env
+        }
+      }
+    }
+  },
+  watchChokidar: {
+    options: {
+      spawn: true
+    },
+    livereload: {
+      options: {
+        livereload: true
+      },
+      files: ['build/**/*']
+    },
+    js: {
+      files: ['src/**/*.js'],
+      tasks: ['newer:babel']
+    },
+    less: {
+      files: ['styles/**/*.less'],
+      tasks: ['less']
+    },
+    copy: {
+      files: ['images/*', 'index.html', 'fonts/*'],
+      tasks: ['newer:copy:dev']
+    }
+  },
   copy: {
-    
+    dev: {
+      files: [{
+        expand: true,
+        cwd: '.',
+        src: ['package.json', 'index.html'],
+        dest: 'build/'
+      }, {
+        expand: true,
+        cwd: 'images/',
+        src: ['**/*'],
+        dest: 'build/'
+      }, {
+        expand: true,
+        cwd: 'fonts/',
+        src: ['**/*'],
+        dest: 'build'
+      }, {
+        expand: true,
+        cwd: 'node_modules',
+        src: _.keys(packageJson.dependancies).map(function(dep){ return dep + '/**/*'}),
+        dest: 'build/node_modules',
+      }]
+    } ,
   },
  }); 
-
+  if (process.platform == 'win32') {
+    grunt.registerTask('default', ['newer:babel', 'less', 'newer:copy:dev', 'shell:electron', 'watchChokidar']);
+    grunt.registerTask('release', ['clean:release', 'babel', 'less', 'copy:dev', 'electron:windows'])
+  }
+  process.on('SIGINT', function() {
+    grunt.task.run(['shell:electron:kill']);
+    process.exit(1);
+  });
 
 }
