@@ -1,12 +1,16 @@
 var path = require('path');
 var packageJson = require('./package.json');
 var electron = require('electron-prebuilt');
+var _ = require('underscore');
 
 module.exports = function(grunt) {
-  require('load-grunt-tasks')(grunt);
- grunt.initConfig({
+    require('load-grunt-tasks')(grunt);
+    var target = grunt.option('target') || 'development';
+    var env = process.env;
+    env.NODE_PATH = '..:' + env.NODE_PATH;
+    env.NODE_ENV = target;
+    grunt.initConfig({
   APPNAME: 'EM1',
-
   electron: {
     windows: {
       options: {
@@ -47,12 +51,12 @@ module.exports = function(grunt) {
         expand: true,
         cwd: 'src/',
         src: ['**/*.js'],
-        dest: 'build/',
+        dest: 'build/'
       }]
     }
   },
   clean: {
-    release: ['build/', 'dist/', 'installer/'],
+    release: ['build/', 'dist/', 'installer/']
   },
   less: {
     options: {
@@ -119,18 +123,21 @@ module.exports = function(grunt) {
         expand: true,
         cwd: 'node_modules',
         src: _.keys(packageJson.dependancies).map(function(dep){ return dep + '/**/*'}),
-        dest: 'build/node_modules',
+        dest: 'build/node_modules'
       }]
-    } ,
-  },
+    }
+  }
  }); 
-  if (process.platform == 'win32') {
+  if (process.platform === 'win32') {
     grunt.registerTask('default', ['newer:babel', 'less', 'newer:copy:dev', 'shell:electron', 'watchChokidar']);
     grunt.registerTask('release', ['clean:release', 'babel', 'less', 'copy:dev', 'electron:windows'])
+  } else {
+      grunt.registerTask('default', ['newer:babel', 'less', 'newer:copy:dev', 'shell:electron', 'watchChokidar']);
+      grunt.registerTask('release', ['clean:release', 'babel', 'less', 'copy:dev', 'electron:osx', 'shell:zip']);
   }
   process.on('SIGINT', function() {
     grunt.task.run(['shell:electron:kill']);
     process.exit(1);
   });
 
-}
+};
