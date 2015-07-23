@@ -1,6 +1,5 @@
 var React = require('react');
 var Router = require('react-router');
-var Link = Router.Link;
 var MemberStore = require('../stores/MemberStore');
 var remote = require('remote');
 
@@ -29,10 +28,10 @@ var Container = React.createClass({
                 <div className="col-md-2" id="sidebar">
                   <div id="navigator">
                     <ul>
-                        <Link to="dashboard"><li>Dashboard</li></Link>
-                        <Link to="search"><li>Cauta</li></Link>
-                        <Link to="newmember"><li>Adauga</li></Link>
-                        <Link to="settings"><li>Setari</li></Link>
+                        <Router.Link to="dashboard"><li>Dashboard</li></Router.Link>
+                        <Router.Link to="search"><li>Cauta</li></Router.Link>
+                        <Router.Link to="newmember"><li>Adauga</li></Router.Link>
+                        <Router.Link to="settings"><li>Setari</li></Router.Link>
                     </ul>
 					          {this.state.errors}
                   </div>
