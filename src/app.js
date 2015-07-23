@@ -1,4 +1,4 @@
-require.main.paths.splice(0,0, process.env.NODE_PATH);
+require.main.paths.splice(0, 0, process.env.NODE_PATH);
 var remote = require('remote');
 var Menu = remote.require('menu');
 var React = require('react');

@@ -15,7 +15,6 @@ var Dashboard = require('./components/dashboard.react');
 var Reports = require('./components/reports.react');
 
 
-
 var routes = (
     <Route name="app" path="/" handler={Container}>
         <Route name="search" path="/search" handler={Search}>
